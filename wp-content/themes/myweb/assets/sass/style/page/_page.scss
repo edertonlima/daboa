@@ -1,0 +1,176 @@
+.icon-page {
+	width: 100%;
+	//padding: 0 35px;
+	margin: 20px 0;
+	display: table;
+	@include box-sizing;
+
+	li {
+		display: table-cell;
+		text-align: center;
+		padding: 0 35px;
+		@include box-sizing;
+
+		img {
+			width: auto;
+			display: inline-block;
+			max-width: 100%;
+			margin: 0 auto 10px;
+		}
+
+		.titulo {
+			border-bottom: 1px solid $cor-txt;
+			padding-bottom: 5px;
+			margin-bottom: 5px;
+			font-size: 1.625rem;
+			line-height: 1.625rem;
+			font-weight: $bold;
+			width: 100%;
+			display: block;
+
+			.num {
+				font-size: 2.375rem;
+				line-height: 2.375rem;
+				font-weight: $bold;
+			}
+		}
+
+		p {
+			text-align: left;
+		}
+
+		&.info-dados {
+			img {
+				margin: 0;
+			}
+
+			.titulo {
+				border: none;
+				padding-bottom: 0px;
+				margin-bottom: 0px;
+				font-weight: $light;
+				display: block;
+
+				.num {
+					display: block;
+					margin: 15px 0;
+				}
+			}
+		}
+	}
+
+	&.count-item-5 {
+		li {
+			width: 20%;
+		}
+	}
+
+	&.count-item-4 {
+		li {
+			width: 25%;
+		}
+	}
+}
+
+.link-mais {
+	a, i {
+		font-size: 1rem;
+		line-height: 1rem;
+	}
+
+	.cor1 {
+		&:hover, &:hover i {
+			color: $cor2;
+		}
+	}
+
+	.cor3 {
+		&:hover, &:hover i {
+			color: $cor1;
+		}
+	}
+
+	i {
+		margin-right: 5px;
+	}
+}
+
+.block-center {
+	width: 100%;
+	max-width: 650px;
+	display: table;
+	margin: 20px auto 0;
+
+	.item-block {
+		display: table-cell;
+		padding: 40px;
+		@include box-sizing;
+	}
+
+	.item-margin {
+		width: 90px;
+	}
+
+	.titulo {
+		font-size: 1.25rem;
+		line-height: 1.25rem;
+		font-weight: $bold;
+		color: $cor-txt;
+	}
+
+	.link-mais {
+		i {
+			display: block;
+		}
+	}
+
+	&.block-inline {
+		.item-block {
+			//width: 30%;
+			padding: 0px;
+		}
+
+		.item-margin {
+			width: 30px;
+		}
+
+		.titulo {
+			font-size: 0.875rem;
+			line-height: 1rem;
+			display: block;
+		}
+
+		.link-mais {
+			i {
+				display: inline-block;
+			}
+		}
+	}
+}
+
+
+.iframe-video {
+	width: 100%;
+	
+	img {
+		width: 100%;
+	}
+}
+
+.operacion-segura {
+	padding: 15px 35px;
+
+	img {
+
+	}
+
+	h4 {
+		font-size: 1.375rem;
+		line-height: 1.5rem;
+		margin-top: 15px;
+	}
+
+	&.bg-escuro {
+		color: #ffffff;
+	}
+}
