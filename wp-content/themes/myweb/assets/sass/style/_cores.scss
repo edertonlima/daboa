@@ -1,6 +1,26 @@
 // BACGROUND
+.bg-cor1 {
+	background: $cor1;
+}
+
+.bg-cor2 {
+	background: $cor2;
+}
+
+.bg-cor3 {
+	background: $cor3;
+}
+
+.bg-cor4 {
+	background: $cor4;
+}
+
+.bg-cor5 {
+	background: $cor5;
+}
+
 .bg-cinza {
-	background: #f2f2f2;
+	background: $bgclaro;
 }
 
 .bg-azul {
@@ -150,6 +170,10 @@
 
 .cor4 {
 	color: $cor4;
+}
+
+.cor5 {
+	color: $cor5;
 }
 
 .verde-limao {

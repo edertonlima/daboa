@@ -1,7 +1,5 @@
 form {
-	width: 90%;
-	max-width: 480px;
-	margin: 0 auto;
+	width: 100%;
 	@include box-sizing;
 	@include clear();
 
@@ -17,38 +15,36 @@ form {
 	input, textarea {
 		max-width: 100%;
 		width: 100%;
-		border: 2px solid $cor1;
-		border-radius: 7px;
-
-		font-size: 1rem; 
-		color: $cor-txt;
+		font-size: $font-size; 
+		color: #ffffff;
 		font-weight: $light;
-		line-height: 36px;
-		background-color: #ffffff;
-		padding: 0 10px;
+		background-color: $cor5;
+		padding: 0 20px;
 		font-style: normal;
 		@include animacao;
 		@include box-sizing;
 
 		@include placeholder{
 			opacity: 1;
-			color: $cor-txt;
+			color: #ffffff;
 		}
 	}
 
 	input[type='text'], input[type='email'], input[type='password'] {
-		height: 36px;		
+		height: 40px;
+		line-height: 40px;	
 	}
 
 	textarea {
+		line-height: $font-size+.25;
 		padding-top: 10px;
 		padding-bottom: 10px;
-		height: 60px;
-		resize: vertical;
+		height: 220px;
+		resize: none;
 	}
 
 	fieldset {
-		margin-top: 15px;
+		margin-bottom: 20px;
 		width: 100%;
 		float: left;
 		//clear: both;
@@ -73,7 +69,7 @@ form {
 				border: none;
 
 				@include placeholder{
-					opacity: 0.75;
+					//opacity: 0.75;
 					color: #ffffff;
 				}
 			}
@@ -126,16 +122,14 @@ label:hover:before {
 button, input[type='submit'], .button { 
 	display: inline-block;
 	width: auto;
-	height: 46px;
-	line-height: 46px;
+	height: 40px;
+	line-height: 40px;
 	color: #ffffff;
 	font-weight: $bold;
-	font-size: 1.06rem; 
+	font-size: 1rem; 
 	text-align: center;
-	text-transform: uppercase;
-	padding: 0 30px;
-	border-radius: 5px;
-	border: 1px solid #ffffff;
+	padding: 0 40px;
+	border-radius: 10px;
 	cursor: pointer;
 	@include animacao;
 	@include box-sizing();
@@ -177,20 +171,10 @@ button, input[type='submit'], .button {
 
 	&.enviar {
 		float: right;
-		background: none;
-		color: $cor-txt;
-		text-transform: none;
-		font-weight: $light;
-		padding: 0;
-		line-height: 36px;
-		height: 36px;
+		background: $cor5;
 
-		i {
-			font-size: 1.375rem;
-			color: $cor1;
-			margin-left: 5px;
-			position: relative;
-			top: 3px;
+		&:hover {
+			background-color: darken($cor5, 10%);
 		}
 	}
 }

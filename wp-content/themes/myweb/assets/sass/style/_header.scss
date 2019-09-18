@@ -1,7 +1,20 @@
 .header {
 	width: 100%;
-	padding: 5px 0 15px 0;
+	height: 100px;
+	margin: 0px 0 10px 0;
+	position: relative;
+	z-index: 999;
 	@include box-sizing;
+
+	&:before {
+		content: "";
+		height: 60px;
+		width: 50%;
+		right: 0;
+		bottom: 1px;
+		position: absolute;
+		background-color: $cor1;
+	}
 }
 
 .breadcrumbs {

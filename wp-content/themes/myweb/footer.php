@@ -2,74 +2,62 @@
 	<footer class="footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-4 col-m-1">
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ocp-br.png" alt="">
-					<p class="justify">Somos una empresa privada que lleva 15 años transportando responsablemente petróleo en bene!cio del país. OCP Ecuador contribuye con el desarrollo del país a través de una operación de transporte de crudo con!able, segura, e!ciente y comprometida con el ambiente desde el inicio de sus operaciones en el 2003.</p>
+				<div class="col-5">
 
-					<div class="list-txt">
-						<h3>Oficinas:</h3>
-						<span>
-							Av. Amazonas 1014<br>
-							y Naciones Unidas<br>
-							Edf. Banco La Previsora,<br>
-							Torre A, 3er piso
-						</span>
-					</div>
+					<h1>
+						<a href="<?php echo get_home_url(); ?>" title="<?php //the_field('titulo', 'option'); ?>">
+							<img src="<?php //the_field('logo_header', 'option'); ?><?php echo get_template_directory_uri(); ?>/assets/images/daboa.png" alt="<?php //the_field('titulo', 'option'); ?>">
+						</a>
+					</h1>
 
-					<div class="list-txt">
-						<h3>Quito - Ecuador:</h3>
-						<span>
-							Teléfonos:<br>
-							PBX (593) 2 297 3200<br>
-							Fax: (593) 2 246 9746
-						</span>
-					</div>
+					<h4>Sobre Nós</h4>
+					<p class="sobre">“Nossa missão é alcançar a liderança de mercado no segmento de massas frescas em Santa Catarina sendo referência pela qualidade de nossos produtos e pelo aprimoramento contínuo de nossos serviços".</p>
+
 				</div>
 
-				<div class="col-2">
+				<div class="col-4">
 					<nav class="nav nav-footer">
-						<h3>Menús Principales</h3>
 						<ul>
 							<li><a href="#" title="Home">Home</a></li>
-							<li><a href="#" title="Quiénes Somos">Quiénes Somos</a></li>
-							<li><a href="#" title="Nuestra Historia">Nuestra Historia</a></li>
-							<li><a href="#" title="Funcionamento">Funcionamento</a></li>
-							<li><a href="#" title="Servicios">Servicios</a></li>
-							<li><a href="#" title="Aporte a la Sociedad">Aporte a la Sociedad</a></li>
-							<li><a href="#" title="Aporte al Pais">Aporte al Pais</a></li>
+							<li><a href="#" title="">Sobre Nós</a></li>
+							<li>
+								<a href="#" title="">Produtos</a>
+								<ul>
+									<li><a href="#" title="">Pão de Alho</a></li>
+									<li><a href="#" title="">Massas para Lasanha</a></li>
+								</ul>
+							</li>
+							<li><a href="#" title="">Receitas</a></li>
+							<li><a href="#" title="">Contato</a></li>
 						</ul>
 					</nav>
 				</div>
 
-				<div class="col-2">
-					<nav class="nav nav-footer">
-						<h3>Menús Adicionales</h3>
-						<ul>
-							<li><a href="#" title="Sala de Prensa">Sala de Prensa</a></li>
-							<li><a href="#" title="Sala de Clientes">Sala de Clientes</a></li>
-							<li><a href="#" title="Contáctenos">Contáctenos</a></li>
-						</ul>
-					</nav>
+				<div class="col-3 center">
+					<h4>Contato</h4>
 
-					<nav class="nav nav-footer rede-social">
-						<h3>Síguenos</h3>
-						<ul>
-							<li><a href="#" title="@ocpecuadorsa"><i class="fab fa-facebook-f"></i>@ocpecuadorsa</a></li>
-							<li><a href="#" title="OCP Ecuador"><i class="fab fa-youtube"></i>OCP Ecuador</a></li>
-							<li><a href="#" title="@OCPEcuador"><i class="fab fa-twitter"></i>@OCPEcuador</a></li>
-						</ul>
-					</nav>
+					<div class="contato-item">
+						<span>Fones:</span><h4>(48) 3432.3196</h4>
+						<span></span><h4>(48) 9981.45736</h4>
+					</div>
+
+					<div class="contato-item">
+						<span>SAC:</span><h4>0800 646 1416</h4>
+					</div>
+
+					<div class="contato-item mini">
+						<span>Email: comercial@massasdaboa.com.br</span>
+					</div>
+
+					<div class="redes-sociais">
+						<span>Siga-nos nas redes sociais e acompanhe as novidades!</span>
+						<a href="https://www.facebook.com/ocpecuadorsa " title=""><i class="fab fa-facebook-f"></i></a>
+						<a href="<?php echo get_home_url(); ?>" title=""><i class="fab fa-instagram"></i></a>
+					</div>
 				</div>
 
-				<div class="col-2">
-					<nav class="nav nav-footer">
-						<h3>Contacto</h3>
-						<ul>
-							<li><a href="#" title="Sala de Proveedores">Sala de Proveedores</a></li>
-							<li><a href="#" title="Sala de Clientes">Sala de Clientes</a></li>
-							<li><a href="#" title="Trabaje con nosotros">Trabaje con nosotros</a></li>
-						</ul>
-					</nav>
+				<div class="col-12">
+					<p class="copy center"><strong>MDB Indústria Alimentiícia LTDA</strong> Rod. Lino Zanolli, nº 90, Distrito Ind., B. Aurora, Içara, SC</p>
 				</div>
 			</div>
 		</div>

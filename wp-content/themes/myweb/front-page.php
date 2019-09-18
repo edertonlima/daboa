@@ -12,31 +12,12 @@
 			</ol>
 
 			<div class="carousel-inner">
-				<div class="carousel-item active" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/bg-slide.jpg');">
+				<div class="carousel-item active" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/slide-1.jpg');">
 				</div>
-				<div class="carousel-item" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/bg-slide-1.jpg');">
+				<div class="carousel-item" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/slide-1.jpg');">
 				</div>
-				<div class="carousel-item" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/bg-slide-2.jpg');">
+				<div class="carousel-item" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/slide-1.jpg');">
 				</div>
-			</div>
-
-			<div class="mask-slide cor2"></div>
-
-			<div class="text-item">
-					
-				<span id="txt-0" class="titulo-slide grande light bottom active">
-					OCP Ecuador promueve prácticas a favor de la seguridad y salud ocupacional
-					<a href="#" class="link inline">Lea más</a>
-				</span>
-				<span id="txt-1" class="titulo-slide grande light bottom">
-					OCP Ecuador promueve prácticas a favor de la seguridad y salud ocupacional
-					<a href="#" class="link inline">Lea más</a>
-				</span>		
-				<span id="txt-2" class="titulo-slide grande light bottom">
-					OCP Ecuador promueve prácticas a favor de la seguridad y salud ocupacional
-					<a href="#" class="link inline">Lea más</a>
-				</span>
-
 			</div>
 
 			<a class="carousel-control-prev" href="#slide-home" role="button" data-slide="prev">
@@ -49,220 +30,145 @@
 			</a>
 		</div>
 
-<?php /*
-
-				<?php /*if( have_rows('slide') ):
-					$slide = 0;
-					while ( have_rows('slide') ) : the_row();
-
-						if(get_sub_field('imagem')){
-							$slide = $slide+1; ?>
-
-							<div class="item <?php if($slide == 1){ echo 'active'; } ?>" style="background-image: url('<?php the_sub_field('imagem'); ?>');">
-
-								<div class="box-height">
-									<div class="box-texto">
-										
-										<p class="texto"><?php the_sub_field('texto'); ?></p>
-										<?php if(get_sub_field('sub_texto')){ ?>
-											<p class="sub-texto"><?php the_sub_field('sub_texto'); ?></p>
-										<?php } ?>
-
-									</div>
-								</div>
-								
-							</div>
-
-						<?php }
-
-					endwhile;
-				endif;* ?>
-
-			</div>
-
-			<ol class="carousel-indicators">
-				
-				<?php //for($i=0; $i<3; $i++){ ?>
-					<li data-target="#slide" data-slide-to="1<?php //echo $i; ?>" class="<?php //if($i == 0){ echo 'active'; } ?>"></li>
-				<?php //} ?>
-				
-			</ol>
-
-		</div> */?>
-
 	</div>
 </section>
 
-<section class="box-content">
-	<div class="container">
-		<form action="<?php echo home_url(); ?>" class="form-busca" method="post">
-			<fieldset>
-				<input type="text" name="s" id="search" placeholder="Buscar en el sitio…">
-				<button type="submit" class="button"><i class="fas fa-search"></i></button>
-			</fieldset>
-
-			<?php /*if(is_search()){ ?>
-				<div class="col-6">
-					<span class="result">
-						<span><?php _e( 'Resultados da pesquisa encontrados para', 'locale' ); ?>: "<?php the_search_query(); ?></span>
-					</span>
-				</div>
-			<?php } */?>
-		</form>
+<section class="box-content list-receita">
+	<div class="bloco-img title-top" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-receita.jpg');">
+		<h2 class="center bg-cor2">RECEITAS</h2>
 	</div>
-</section>
 
-<section class="box-content bg-claro prensa prensa-list">
 	<div class="container">
-		
-		<div class="row">
-			<div class="col-12">
-
-				<h3>Notas de Prensa</h3>
+		<h3 class="center"><strong class="cor2">EXPLORE</strong> nossas receitas e descubra sabores sem igual!</h3>
 			
-				<div class="carousel-itens owl-carousel owl-theme owl-loaded">
+		<div class="carousel-itens owl-carousel owl-theme owl-loaded">
+			<div class="owl-stage-outer">
+				<div class="owl-stage">
+
+					<div class="owl-item">
+						<a href="javascript:" class="bloco-img title-top" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-pizza-chocolatecommorango.jpg');">
+							<h2 class="center bg-cor2"><span>Pizza de Chocolate com Morango</span></h2>
+							<div class="mask-item vertical-center">
+								<span class="content-vertical">Leia mais...</span>
+							</div>
+						</a>
+					</div>
+
+					<div class="owl-item">
+						<a href="javascript:" class="bloco-img title-top" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-pizza-portuguesa.jpg');">
+							<h2 class="center bg-cor2"><span>Pizza Portuguesa</span></h2>
+							<div class="mask-item vertical-center">
+								<span class="content-vertical">Leia mais...</span>
+							</div>
+						</a>
+					</div>
+
+				</div>
+			</div>
+		</div>	
+	</div>
+</section>
+
+<section class="box-content list-linha-prod">
+	<div class="bloco-img title-top" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-linhadeprodutos.jpg');">
+		<h2 class="title-mini center bg-cor3">LINHA DE PRODUTOS</h2>
+	</div>
+
+	<div class="container">
+		<h3 class="center">Conheça nossa <strong class="cor3">LINHA COMPLETA</strong> de produtos daBoa!</h3>
+
+		<div class="row">
+			<div class="col-6">
+				
+				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
 					<div class="owl-stage-outer">
 						<div class="owl-stage">
 
-<?php for ($i=0; $i < 3; $i++) { ?>
-
 							<div class="owl-item">
-								<a href="<?php echo get_home_url(); ?>" title="<?php //the_field('titulo', 'option'); ?>">
-									<img src="<?php //the_field('logo_header', 'option'); ?><?php echo get_template_directory_uri(); ?>/assets/images/thumbs-prensa-1.jpg" alt="<?php //the_field('titulo', 'option'); ?>">
+								<a href="javascript:" class="hover-prod">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/paodealho-tradicional.jpg">
 								</a>
-								<span class="data-prensa" style="background-color: #0B7ABF">6 Mayo 2019</span>
-								<a href="<?php echo get_home_url(); ?>" title="" class="titulo-prensa">
-									Emprendedores que evidencian que Ecuardo es un país de oportunidades
-								</a>
-								<span class="categoria-prensa" style="color: #0B7ABF">
-									PRODUCTIVIDAD
-								</span>
 							</div>
-
-							<div class="owl-item">
-								<a href="<?php echo get_home_url(); ?>" title="">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/thumbs-prensa-2.jpg" alt="">
-								</a>
-								<span class="data-prensa" style="background-color: #0B7ABF">28 Mayo 2019</span>
-								<a href="<?php echo get_home_url(); ?>" title="" class="titulo-prensa">
-									250 estudiantes de Baeza recibieron atención odontológica
-								</a>
-								<span class="categoria-prensa" style="color: #0B7ABF">
-									PRODUCTIVIDAD
-								</span>
-							</div>
-
-							<div class="owl-item">
-								<a href="<?php echo get_home_url(); ?>" title="<?php //the_field('titulo', 'option'); ?>">
-									<img src="<?php //the_field('logo_header', 'option'); ?><?php echo get_template_directory_uri(); ?>/assets/images/thumbs-prensa-3.jpg" alt="<?php //the_field('titulo', 'option'); ?>">
-								</a>
-								<span class="data-prensa" style="background-color: #0B7ABF">8 Abril 2019</span>
-								<a href="<?php echo get_home_url(); ?>" title="" class="titulo-prensa">
-									Cooperación institucional sigue beneficiando a estudiantes en atención odontológica
-								</a>
-								<span class="categoria-prensa" style="color: #0B7ABF">
-									PRODUCTIVIDAD
-								</span>
-							</div>
-
-							<div class="owl-item">
-								<a href="<?php echo get_home_url(); ?>" title="<?php //the_field('titulo', 'option'); ?>">
-									<img src="<?php //the_field('logo_header', 'option'); ?><?php echo get_template_directory_uri(); ?>/assets/images/thumbs-prensa-4.jpg" alt="<?php //the_field('titulo', 'option'); ?>">
-								</a>
-								<span class="data-prensa" style="background-color: #F9A61A">29 Abril 2019</span>
-								<a href="<?php echo get_home_url(); ?>" title="" class="titulo-prensa">
-									OCP Ecuador promueve prácticas a favor de la seguridad y salud ocupacional]
-								</a>
-								<span class="categoria-prensa" style="color: #F9A61A">
-									SALUD
-								</span>
-							</div>
-
-<?php } ?>
 
 						</div>
 					</div>
 				</div>
-							
-			</div>	
-		</div>
-
-	</div>
-</section>
-
-
-<section class="box-content">
-	<div class="container">
-		
-		<div class="row">
-			<div class="col-12">
-
-				<h2 class="center"><span>OCP EN NÚMEROS</span></h2>
-				<p class="sub-tituto center">Transportamos el crudo de Ecuador y Colombia de manera responsable</p>
-
-				<ul class="icon-page count-item-5">
-					<li>
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-01.png" align="">
-						<span class="titulo center cor3"><span class="num cor3">+1.500</span></span>
-						<p>buques cargados con crudo para exportación</p>
-					</li>
-
-					<li>
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-02.png" align="">
-						<span class="titulo center cor2"><span class="num cor2">+16</span>mil</span>
-						<p>fuentes de empleo de tubería tiene el OCP creadas</p>
-					</li>
-
-					<li>
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-03.png" align="">
-						<span class="titulo center cor4"><span class="num cor4">485</span>km</span>
-						<p>de tubería tiene el OCP</p>
-					</li>
-
-					<li>
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-04.png" align="">
-						<span class="titulo center"><span class="num">815</span>millones</span>
-						<p>barriles de crudo transportados desde el 2003</p>
-					</li>
-
-					<li>
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-05.png" align="">
-						<span class="titulo center verde-limao"><span class="num verde-limao">42</span>millones</span>
-						<p>de dólares invertidos en 750 proyectos de Responsabilidas Social</p>
-					</li>
-				</ul>
-
-				<div class="link-mais center">
-					<a href="<?php echo get_home_url(); ?>/proyectos" title="Conoce más de nuestros logros" class="link cor1">
-						<i class="fas fa-plus-circle cinza"></i> Conoce más de nuestros logros
-					</a>
-				</div>
+				<h2 class="full center bg-cor4"><span>Pão de Alho</span></h2>
 
 			</div>
-		</div>
-	
+			<div class="col-6">
+				
+				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
+					<div class="owl-stage-outer">
+						<div class="owl-stage">
+
+							<div class="owl-item">
+								<a href="javascript:" class="hover-prod">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/massaparalasanha.jpg">
+								</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<h2 class="full center bg-cor2"><span>Massa para Lasanha</span></h2>
+
+			</div>
+		</div>		
 	</div>
 </section>
 
+<section class="box-content">
+	<div class="container">	
+		<div class="bloco-img grande title-bottom" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-contato.jpg');">
+			<h2 class="center bg-cor5">FALE CONOSCO</h2>
+		</div>
+
+		<h3 class="center">Dúvidas ou sugestões, entre em <strong class="cor5">CONTATO</strong> preenchendo esse formulário, ou fale conosco via telefone ou e-mail.</h3>
+
+		<div class="content">
+			<form class="row">
+				<div class="col-6">
+					<fieldset>
+						<input type="text" name="" placeholder="Digite seu nome...">
+					</fieldset>
+
+					<fieldset>
+						<input type="text" name="" placeholder="Digite seu telefone...">
+					</fieldset>
+
+					<fieldset>
+						<input type="text" name="" placeholder="Digite seu e-mail...">
+					</fieldset>
+
+					<fieldset>
+						<input type="text" name="" placeholder="Digite o assunto...">
+					</fieldset>
+				</div>
+
+				<div class="col-6">
+					<fieldset>
+						<textarea name="" placeholder="Digite sua mensagem..."></textarea>
+					</fieldset>
+					<fieldset>
+						<button class="enviar">Enviar</button>
+					</fieldset>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+
+
 <?php get_footer(); ?>
-
-<script type="text/javascript">
-	$('#slide-home').on('slide.bs.carousel', function (e) {
-		$('.titulo-slide').removeClass('active');
-	});
-
-	$('#slide-home').on('slid.bs.carousel', function (e) {
-		$('#txt-'+e.to).addClass('active');
-	});
-</script>
 
 <!-- CAROUSEL -->
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/owl.carousel.min.js"></script>
 
 <script type="text/javascript">
 	$('.carousel-itens').owlCarousel({
-		loop:false,
-		margin:30,
+		loop:true,
+		margin:40,
 		responsiveClass:true,
 		nav:true,
 		navText: ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>'],
@@ -273,21 +179,48 @@
 				nav:true
 			},
 			600:{
-				items:3,
+				items:2,
 				nav:false
 			},
 			1000:{
-				items:4,
+				items:2,
 				nav:true,
 				loop:false
 			}
 		}
 	})
 
+	$('.carousel-itens-produtos').owlCarousel({
+		loop:true,
+		margin:0,
+		responsiveClass:true,
+		nav:true,
+		navText: ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>'],
+		//rtl:true,
+		responsive:{
+			0:{
+				items:1,
+				nav:true
+			},
+			600:{
+				items:1,
+				nav:false
+			},
+			1000:{
+				items:1,
+				nav:true,
+				loop:false
+			}
+		}
+	})
+
+	// centraliza
+	/*
 	var qtddot = $('.owl-dots').children().length;
 	qtddot = (((qtddot*22)/2)+10)+'px';
 	$('.owl-prev').css('margin-right',qtddot);
 	$('.owl-next').css('margin-left',qtddot);
+	*/
 </script>
 
 

@@ -7,9 +7,9 @@
 
 		li {
 			display: table-cell;
-			line-height: 30px;
 			padding: 0px 5px;
 			text-align: center;
+			position: relative;
 		}
 	}
 
@@ -17,7 +17,7 @@
 		font-size: 1rem;
 		display: inline-block;
 		color: #ffffff;
-		font-weight: $regular;
+		font-weight: $bold;
 		padding: 0px 5px;
 		@include animacao();
 
@@ -26,28 +26,88 @@
 			color: #fff;
 			position: relative;
 		}
-
-		&:hover, &.ativo {
-			color: $cor2;
-
-			i {
-				color: $cor2;
-			}
-		}
 	}
 
 	&.nav-principal {
 		width: 100%;
-		height: 30px;
+		height: 60px;
+		margin-top: 15px;
 		background-color: $cor1;
+		float: left;
+		position: relative;
+		@include clear;
+
+		&:before {
+			content: "";
+			height: 60px;
+			width: 100px;
+			left: 0;
+			bottom: 0px;
+			position: absolute;
+			background-color: #ffffff;
+		}
 
 		ul {
 			width: 100%;
 			display: table;
+
+			li {
+				padding: 20px 5px 21px;
+				position: relative;
+				text-align: center;
+
+				&:before {
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 50%;
+					background-color: #ffffff;
+					height: 5px;
+					width: 0px;
+					-webkit-transition: all .25s;
+					transition: all .25s;
+				}
+
+				&:hover {
+					&:before {
+						height: 5px;
+						width: 100%;
+						left: 0;
+					}
+				}
+
+				&.ativo {
+					background-color: #ffffff;
+
+					a {
+						color: $cor1;
+					}
+
+					i {
+						color: $cor2;
+					}
+				}
+
+				&:first-child {
+					width: 250px;
+					padding: 0;
+
+					a {
+						padding: 0;
+					}
+
+					&:hover {
+						&:before {
+							display: none;
+						}
+					}
+				}
+			}
 		}
 	}
 
 	&.nav-topo {
+		margin-top: 2px; 
 		float: right;
 
 		ul {
@@ -56,24 +116,33 @@
 		}
 
 		li {
-			border-left: 2px solid $cor1;
-			padding: 0 15px;
+			padding: 0 20px;
+			font-size: .875rem;
+			line-height: 1.25rem;
+			font-weight: $bold;
+
+			i {
+				font-size: 1.25rem;
+				color: $cor-txt;
+				position: relative;
+				top: 2px;
+			}
 
 			a {
 				padding: 0 15px;
-				color: $cor1;
-
-				i {
-					color: $cor1;
-				}
 
 				&:hover, &.ativo {
-					color: $cor2;
-
 					i {
-						color: $cor2;
+						color: $cor1;
 					}
 				}
+			}
+
+			span {
+				padding: 0 5px;
+				font-size: .875rem;
+				line-height: 1.25rem;
+				font-weight: $bold;
 			}
 
 			&.rede-social {
@@ -85,7 +154,13 @@
 				}
 
 				&.last-rede-social {
-					padding-right: 15px;
+					padding-right: 0px;
+				}
+			}
+
+			&.ico-inline {
+				i {
+					margin-right: 5px;
 				}
 			}
 		}
@@ -125,34 +200,37 @@
 	}
 
 	&.nav-footer {
-		margin-top: 60px;
-
-		&.rede-social {
-			margin-top: 30px;
-		}
-
 		li {
 			display: block;
 			text-align: left;
-			margin: 0;
+			margin: 0 0 25px;
 			padding: 0;
 			line-height: normal;
 
 			a {
 				padding: 0;
-				font-size: $font-size;
-				line-height: $font-size+.25;
-				font-weight: $light;
-
-				i {
-					width: 22px;
-					//text-align: center;
-					color: $verde-limao;
-					padding-right: 5px;
-				}
+				font-weight: $bold;
+				font-size: 1.225rem;
+				line-height: 1.225rem+.25;
+				color: $cor-txt;
 
 				&:hover, &.ativo {
-					color: $verde-limao;
+					color: $cor1;
+				}
+			}
+
+			ul {
+				margin-top: 5px;
+				display: block;
+
+				li {
+					margin: 0;
+
+					a {
+						font-weight: $regular;
+						font-size: 1rem;
+						line-height: 1rem+.25;
+					}
 				}
 			}
 		}

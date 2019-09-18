@@ -53,9 +53,9 @@
 	transform: scale($value);
 }
 
-@mixin scale-rotate() {
-	$scale: 1.2;
-	$rotate: -5deg;
+@mixin scale-rotate($scale,$rotate) {
+	//$scale: 1.2;
+	//$rotate: -5deg;
 	-webkit-transform: scale($scale) rotate($rotate);
 	-moz-transform: scale($scale) rotate($rotate);
 	-o-transform: scale($scale) rotate($rotate);

@@ -1,3 +1,26 @@
+.hover-prod {
+	img {
+		@include animacao;
+	}
+
+	&:hover {
+		img {
+			@include scale-rotate(1.05,-2deg); 
+		}
+	}
+}
+
+.list-linha-prod {
+	.bloco-img {
+		height: 70vh;
+	}
+}
+
+
+
+
+
+
 .list-category {
 	display: block;
 	margin: 20px 0;

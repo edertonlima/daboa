@@ -1,20 +1,83 @@
 .footer {
+	margin-top: 80px;
 	width: 100%;
-	padding: 15px 0 40px;
-	background-color: $bgescuro;
+	padding: 40px 0 20px;
+	background-color: #efefef;
 	z-index: 0;
 	position: relative;
 	@include clear;
 
-	p, span {
-		color: #ffffff;
+	[class*="col-"] {
+		padding: 0;
 	}
 
-	h3 {
-		font-weight: $regular;
-		font-size: $font-size;
-		line-height: $font-size+.25;
-		color: $verde-limao;
+	h1 {
+		position: relative;
+		width: 200px;
+		top: -125px;
+		margin-bottom: -125px;
+	}
+
+
+	h4 {
+		margin-bottom: 25px;
+	}
+
+	p.sobre {
+		max-width: 280px;
+	}
+
+	.contato-item {
+		margin-bottom: 25px;
+
+		span, h4 {
+			display: inline-block;
+		}
+
+		h4 {
+			width: 150px;
+			margin: 0;
+			text-align: left;
+		}
+
+		span {
+			font-weight: $light;
+			font-size: 1.225rem;
+			line-height: 1.225rem+.25;
+			width: 70px;
+			text-align: right;
+			padding-right: 10px;
+		}
+
+		&.mini {
+			span, a {
+				font-size: $font-size;
+				line-height: $font-size+.25;
+				font-weight: $light;
+				width: auto;
+				text-align: center;
+				padding: 0;
+			}
+		}
+	}
+
+	.redes-sociais {
+		width: 150px;
+		display: block;
+		margin: 0 auto;
+
+		span {
+			display: block;
+			font-weight: $bold;
+			font-size: .75rem;
+			line-height: 1rem;
+			margin-bottom: 25px;
+		}
+
+		a {
+			display: inline-block;
+			margin: 0 10px;
+		}
 	}
 
 	.list-txt {
@@ -44,15 +107,11 @@
 	}
 
 	.copy {
-		text-align: center;
-		color: #525252;	
 		font-size: .8125rem;
-		padding: 20px 0;
+		padding: 20px 0 0;
 
-		i {
-			font-size: 0.7rem;
-			opacity: .7;
-			margin-right: 3px;
+		strong {
+			font-size: .8125rem;
 		}
 	}
 }

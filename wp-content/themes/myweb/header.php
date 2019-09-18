@@ -178,19 +178,10 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
 			<?php /*
 			<a href="javascript:" class="menu-mobile"></a>
 			*/ ?>
-
-			<h1>
-				<a href="<?php echo get_home_url(); ?>" title="<?php //the_field('titulo', 'option'); ?>">
-					<img src="<?php //the_field('logo_header', 'option'); ?><?php echo get_template_directory_uri(); ?>/assets/images/ocp.png" alt="<?php //the_field('titulo', 'option'); ?>">
-				</a>
-			</h1>
-
 			<?php get_template_part( 'nav-topo' ); ?>
+			<?php get_template_part( 'nav-principal' ); ?>
 
 		</div>
-
-		<?php get_template_part( 'nav-principal' ); ?>
-
 	</header>
 
 	<?php //get_template_part( 'breadcrumbs', get_post_format() ); ?>
