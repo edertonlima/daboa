@@ -19,6 +19,14 @@
 	background: $cor5;
 }
 
+.bg-cor6 {
+	background: $cor6;
+}
+
+.bg-cor7 {
+	background: $cor7;
+}
+
 .bg-cinza {
 	background: $bgclaro;
 }
@@ -176,6 +184,14 @@
 	color: $cor5;
 }
 
+.cor6 {
+	color: $cor6;
+}
+
+.cor7 {
+	color: $cor7;
+}
+
 .verde-limao {
 	color: $verde-limao;
 }
@@ -194,4 +210,22 @@
 
 .verde-claro {
 	color: $verde-claro;
+}
+
+
+
+/* form */
+.form-cor6 {
+	input, textarea {
+		background-color: $cor6;
+	}
+
+	button {
+		color: $cor6;
+		border-color: $cor6;
+
+		&:hover {
+			background-color: $cor6;
+		}
+	}
 }

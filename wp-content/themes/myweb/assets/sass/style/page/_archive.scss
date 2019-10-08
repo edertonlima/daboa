@@ -1,4 +1,8 @@
 .hover-prod {
+	background-color: $bgclaro;
+	display: inline-block;
+	overflow: hidden;
+
 	img {
 		@include animacao;
 	}
@@ -8,11 +12,137 @@
 			@include scale-rotate(1.05,-2deg); 
 		}
 	}
+
+	h2 {
+		position: relative;
+		z-index: 99;
+	}
 }
 
 .list-linha-prod {
 	.bloco-img {
-		height: 70vh;
+		height: 46vh;
+	}
+}
+
+.list-prod {
+	h4 {
+		font-weight: $regular;
+		text-align: center;
+		margin-bottom: 10px;
+		font-size: 1.125rem;
+		line-height: 1.5rem;
+	} 
+}
+
+.detalhe-prod {
+	.img-produto {
+		width: 100%;
+		border: 3px solid $cor7;
+		border-radius: 10px;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	.img-tabela {
+		width: 100%;
+		margin: 50px 0;
+
+		img {
+			display: block;
+			width: auto;
+			max-width: 100%;
+			margin: 0 auto;
+		}
+	}
+
+	.content {
+		max-width: 380px;
+		margin: 50px 0 0;
+	}
+	.ingredientes {
+
+		.tit-ingredientes {
+			padding-right: 10px;	
+		}
+
+		p, strong, span {
+			color: $cor7;
+		}
+
+		p, span {
+			font-weight: $light;
+			color: $cor7;
+		}
+	}
+
+	.modo-preparo {
+		h3 {
+			padding: 0;
+			font-weight: $bold;
+			margin-bottom: 10px;
+			font-size: 1.5rem;
+		}
+
+		.item-preparo {
+			li {
+				padding: 30px 60px 30px 20px;
+				margin-bottom: 20px;
+				display: table;
+				position: relative;
+
+				&:last-child {
+					margin: 0;
+				}
+
+				.ico-preparo, .txt-preparo {
+					display: table-cell;
+					vertical-align: middle;
+				}
+
+				.nun-preparo {
+					position: absolute;
+					top: 30px;
+					left: 20px;
+					text-align: center;
+
+					span {
+						font-size: .85rem;
+						line-height: 24px;
+						color: #ffffff;
+						display: inline-block;
+						width: 24px;
+						height: 24px;
+						border-radius: 50%;
+						background-color: $cor7;
+						position: relative;
+						top: -15px;
+						font-weight: $bold;
+					}
+				}
+
+				.ico-preparo {
+					width: 200px;
+					max-width: none;
+				}
+
+				 .txt-preparo, strong {
+				 	//font-size: 1.125rem;
+				 	//line-height: 1rem;
+				 }
+
+				 .txt-preparo {
+				 	padding-left: 60px;
+
+					 strong {
+					 	font-weight: $light;
+					 	color: $cor7;
+					 }
+				 }
+			}
+		}
 	}
 }
 
@@ -20,32 +150,47 @@
 
 
 
-
 .list-category {
-	display: block;
-	margin: 20px 0;
+	display: table;
+	width: 100%;
+	margin: 0px 0;
+	padding: 10px 0;
 	text-align: center;
+	height: 110px;
+	@include box-sizing;
 
 	li {
+		width: 200px;
 		padding: 0 10px;
-		display: inline-block;
+		display: table-cell;
+		text-align: center;
+		vertical-align: top;
 
 		a {
-			padding: 5px;
 			display: table;
+			margin: 0 auto;
 
 			img, span {
-				display: table-cell;
-				vertical-align: middle;
+				width: 82px;
 			}
 
 			img {
-				width: 40px;
-				margin-right: 2px;
+				display: block;
 			}
 
-			span {
-				font-size: 1.125rem;
+			.txt {
+				margin-top: 5px;
+				height: 30px;
+				display: table;
+
+				span {
+					display: table-cell;
+					vertical-align: middle;
+					font-size: .8rem;
+					line-height: .9rem;
+					font-weight: $bold;
+					color: #ffffff;
+				}
 			}
 		}
 

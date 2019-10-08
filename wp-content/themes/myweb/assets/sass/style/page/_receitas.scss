@@ -1,5 +1,40 @@
 .list-receita {
+	.tit-slide-receita {
+		position: relative;
+		top: 40px;
+		margin-top: -40px;
+		z-index: 99;
+	}
 	.bloco-img {
-		height: 70vh;
+		height: 53vh;
+
+		&.slide-receita {
+
+		}
+
+		.mask-item {
+			.tit-receita {
+				font-size: 2.5rem;
+				line-height: 2.5rem;
+				color: #ffffff;
+				font-weight: $bold;
+				max-width: 380px;
+				width: 90%;
+				display: block;
+				margin: 0 auto;
+			}
+		}
+	}
+
+	.owl-carousel {
+		height: 53vh;
+
+		.owl-dots {
+			.owl-dot {
+				&.active {
+					background: $cor2;
+				}
+			}
+		}
 	}
 }

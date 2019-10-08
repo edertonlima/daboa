@@ -1,7 +1,7 @@
 .header {
 	width: 100%;
-	height: 100px;
-	margin: 0px 0 10px 0;
+	//height: 100px;
+	margin: 0px 0 20px 0;
 	position: relative;
 	z-index: 999;
 	@include box-sizing;
@@ -11,35 +11,33 @@
 		height: 60px;
 		width: 50%;
 		right: 0;
-		bottom: 1px;
+		bottom: 0px;
 		position: absolute;
 		background-color: $cor1;
 	}
 }
 
 .breadcrumbs {
-	width: 70%;
-	max-width: 700px;
 	display: block;
-	margin: 0px auto;
+	margin: 20px auto 20px;
 
 	ul {
 
 		li {
 			display: inline;
-			font-size: $font-size;
-			line-height: $font-size;
-			font-weight: $light;
+			font-size: .8rem;
+			line-height: 1rem;
+			font-weight: $regular;
+			color: #9b9b9b;
 
 			&:after {
-				content: "\f054";
-				font-size: .7rem;
-				line-height: 1.37rem;
-				font-family: 'Font Awesome 5 Free';
-				font-weight: 900;
+				content: "/";
+				font-size: .8rem;
+				line-height: 1rem;
+				font-weight: $regular;
 				display: inline;
 				padding: 0 1px 0 5px;
-				//opacity: .7;
+				color: #9b9b9b;
 			}
 
 			&:last-child {
@@ -51,9 +49,10 @@
 
 		a {
 			display: inline;
-			font-size: $font-size;
-			line-height: $font-size;
-			font-weight: $regular;
+			font-size: .8rem;
+			line-height: 1rem;
+			font-weight: $bold;
+			color: #9b9b9b;
 
 			&:hover {
 				color: $cor1;

@@ -49,6 +49,10 @@ body * {
 		[class*="col-"] {
 			padding-right: $padding-col; 
 			padding-left: $padding-col;
+
+			&.no-padding {
+				padding: 0;
+			}
 		}
 	}
 
@@ -107,9 +111,17 @@ body * {
 
 	.content {
 		width: 100%;
-		max-width: 710px;
+		max-width: 540px;
 		display: block;
 		margin: 0 auto;
+
+		&.form {
+			max-width: 810px;
+		}
+
+		&.sobre {
+			max-width: 590px;
+		}
 
 		.row {
 			margin-right: -10px;
@@ -131,13 +143,34 @@ body * {
 			}
 		}
 
-		p {
-			font-size: 1.125rem;
-			line-height: 1.125rem;
-			margin-top: 15px;
+		.destaque {
+			width: 100%;
+			display: table;
+			margin-top: 45px;
 
-			&:first-child {
-				margin-top: 0;
+			span {
+				font-weight: $regular;
+				text-align: justify;
+				font-style: italic;
+				color: $cor6;
+				display: table-cell;
+				vertical-align: middle;
+				font-size: 1.25rem;
+				line-height: 1.5rem;
+				padding: 0px 10px;
+			}
+
+			&:after, &:before {
+				content: '';
+				display: table-cell;
+				vertical-align: middle;				
+				width: 32px;
+				height: 128px;
+				background: url('../images/text-destaque.jpg') no-repeat top center;
+			}
+
+			&:after {
+				@include rotacao(180);
 			}
 		}
 	}

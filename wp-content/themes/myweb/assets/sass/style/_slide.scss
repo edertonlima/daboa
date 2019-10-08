@@ -24,6 +24,7 @@
 		li {
 			width: 20px;
 			height: 20px;
+			margin: 0 10px;
 			border-radius: 50%;
 			box-shadow: 1px;
 			cursor: pointer;
@@ -33,6 +34,45 @@
 			&.active {
 				background: $cor1;
 			}
+		}
+	}
+}
+
+
+
+.owl-carousel {
+	// CONTROLES
+
+	.owl-dots {
+		bottom: 20px;
+		position: absolute;
+		z-index: 15;
+		width: 100%;
+		text-align: center;
+		
+		.owl-dot {
+			width: 20px;
+			height: 20px;
+			margin: 0 10px;
+			border-radius: 50%;
+			box-shadow: 1px;
+			cursor: pointer;
+			box-shadow: 1px 1px 2px #333;
+			background: $bgclaro;
+
+			span {
+				display: none;
+			}
+
+			&.active {
+				background: $cor1;
+			}
+		}
+	}
+
+	&.owl-nav-off {
+		.owl-nav {
+			display: none;
 		}
 	}
 }

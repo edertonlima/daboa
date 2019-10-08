@@ -8,29 +8,25 @@
 					</a>
 				</h1>
 			</li>
-			
+
 			<li class="<?php if ( is_front_page() ) : echo 'ativo'; endif ?>">
 				<a href="<?php echo get_home_url(); ?>" title="">HOME</a>
 			</li>
 
-			<li class="">
-				<a href="<?php echo get_permalink(get_page_by_path('quienes-somos')); ?>" title="" class="<?php if ( is_page('quienes-somos') ) : echo 'ativo'; endif ?>">SOBRE NÓS</a>
+			<li class="<?php if ( is_page('sobre-nos') ) : echo 'ativo'; endif ?>">
+				<a href="<?php echo get_permalink(get_page_by_path('sobre-nos')); ?>" title="">SOBRE NÓS</a>
 			</li>
 
-			<li class="">
-				<a href="<?php echo get_permalink(get_page_by_path('nuestra-historia')); ?>" title="" class="<?php if ( is_page('nuestra-historia') ) : echo 'ativo'; endif ?>">PRODUTOS</a>
+			<li class="<?php if ( is_home('produtos') ) : echo 'ativo'; endif ?>">
+				<a href="<?php echo get_permalink(get_page_by_path('produtos')); ?>" title="">PRODUTOS</a>
 			</li>
 
-			<li class="">
-				<a href="<?php echo get_permalink(get_page_by_path('funcionamiento')); ?>" title="" class="<?php if ( is_page('funcionamiento') ) : echo 'ativo'; endif ?>">RECEITAS</a>
+			<li class="<?php if ( is_page('funcionamiento') ) : echo 'ativo'; endif ?>">
+				<a href="<?php echo get_home_url(); ?>/receitas" title="">RECEITAS</a>
 			</li>
 
-			<li class="">
-				<a href="<?php echo get_home_url(); ?>/servicios" title="" class="<?php if ( is_post_type_archive('servicios') ) : echo 'ativo'; endif ?>">SERVICIOS</a>
-			</li>
-
-			<li class="">
-				<a href="<?php echo get_permalink(get_page_by_path('aporte-a-la-sociedad')); ?>" title="" class="<?php if ( is_page('aporte-a-la-sociedad') ) : echo 'ativo'; endif ?>">CONTATO</a>
+			<li class="<?php if ( is_page('contato') ) : echo 'ativo'; endif ?>">
+				<a href="<?php echo get_permalink(get_page_by_path('contato')); ?>" title="">CONTATO</a>
 			</li>
 		</ul>
 </nav>

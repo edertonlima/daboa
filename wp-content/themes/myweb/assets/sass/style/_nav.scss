@@ -14,10 +14,10 @@
 	}
 
 	a {
-		font-size: 1rem;
+		font-size: 1.25rem;
 		display: inline-block;
 		color: #ffffff;
-		font-weight: $bold;
+		font-weight: $regular;
 		padding: 0px 5px;
 		@include animacao();
 
@@ -52,7 +52,7 @@
 			display: table;
 
 			li {
-				padding: 20px 5px 21px;
+				padding: 19px 5px 18px;
 				position: relative;
 				text-align: center;
 
@@ -80,6 +80,7 @@
 					background-color: #ffffff;
 
 					a {
+						font-weight: $bold;
 						color: $cor1;
 					}
 
@@ -107,7 +108,7 @@
 	}
 
 	&.nav-topo {
-		margin-top: 2px; 
+		margin: 25px 0; 
 		float: right;
 
 		ul {
@@ -122,10 +123,10 @@
 			font-weight: $bold;
 
 			i {
-				font-size: 1.25rem;
+				font-size: 1.5rem;
 				color: $cor-txt;
 				position: relative;
-				top: 2px;
+				top: 3px;
 			}
 
 			a {
@@ -203,16 +204,16 @@
 		li {
 			display: block;
 			text-align: left;
-			margin: 0 0 25px;
+			margin: 0 0 15px;
 			padding: 0;
 			line-height: normal;
 
 			a {
 				padding: 0;
 				font-weight: $bold;
-				font-size: 1.225rem;
-				line-height: 1.225rem+.25;
-				color: $cor-txt;
+				font-size: 1.125rem;
+				line-height: 1.125rem+.25;
+				color: #000000;
 
 				&:hover, &.ativo {
 					color: $cor1;
@@ -220,11 +221,16 @@
 			}
 
 			ul {
-				margin-top: 5px;
-				display: block;
+				display: inline-block;
+				vertical-align: top;
+				padding-left: 10px;
 
 				li {
-					margin: 0;
+					margin: 0px 0 10px 0;
+
+					&:last-child {
+						margin-bottom: 0;
+					}
 
 					a {
 						font-weight: $regular;

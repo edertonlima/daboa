@@ -15,11 +15,13 @@ form {
 	input, textarea {
 		max-width: 100%;
 		width: 100%;
-		font-size: $font-size; 
+		font-size: 1.125rem; 
+		text-transform: uppercase;
 		color: #ffffff;
 		font-weight: $light;
 		background-color: $cor5;
 		padding: 0 20px;
+		border-radius: 7px;
 		font-style: normal;
 		@include animacao;
 		@include box-sizing;
@@ -31,20 +33,20 @@ form {
 	}
 
 	input[type='text'], input[type='email'], input[type='password'] {
-		height: 40px;
-		line-height: 40px;	
+		height: 60px;
+		line-height: 60px;	
 	}
 
 	textarea {
-		line-height: $font-size+.25;
-		padding-top: 10px;
-		padding-bottom: 10px;
-		height: 220px;
+		line-height: 1.25rem;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		height: 363px;
 		resize: none;
 	}
 
 	fieldset {
-		margin-bottom: 20px;
+		margin-bottom: 40px;
 		width: 100%;
 		float: left;
 		//clear: both;
@@ -54,7 +56,7 @@ form {
 		}
 	}
 
-	&.form-busca {
+	/*&.form-busca {
 		fieldset {
 			padding-right: 50px!important;
 			position: relative;
@@ -97,10 +99,19 @@ form {
 				}
 			}
 		}
-	}
+	}*/
 
-	&.contacto {
-		max-width: 500px;
+	&.fale-conosco {
+		&.row [class*="col-"] {
+			&.esq {
+				padding-right: 60px;
+			}
+
+			&.dir {
+				padding-left: 60px;
+			}
+		}
+		/*max-width: 500px;
 		margin-top: 20px;
 
 		label {
@@ -110,7 +121,7 @@ form {
 
 		textarea {
 			height: 115px;
-		}
+		}*/
 	}
 }
 
@@ -122,15 +133,18 @@ label:hover:before {
 button, input[type='submit'], .button { 
 	display: inline-block;
 	width: auto;
-	height: 40px;
-	line-height: 40px;
+	height: 54px;
+	line-height: 48px;
 	color: #ffffff;
 	font-weight: $bold;
-	font-size: 1rem; 
+	font-size: 1.125rem; 
+	text-transform: uppercase;
 	text-align: center;
 	padding: 0 40px;
 	border-radius: 10px;
 	cursor: pointer;
+	border: 3px solid;
+	background-color: transparent;
 	@include animacao;
 	@include box-sizing();
 
@@ -171,10 +185,12 @@ button, input[type='submit'], .button {
 
 	&.enviar {
 		float: right;
-		background: $cor5;
+		color: $cor5; 
+		border-color: $cor5; 
 
 		&:hover {
-			background-color: darken($cor5, 10%);
+			color: #ffffff;
+			background-color: $cor5;
 		}
 	}
 }

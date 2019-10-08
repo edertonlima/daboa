@@ -1,199 +1,78 @@
 <?php get_header(); ?>
-<?php $category = get_queried_object(); //var_dump($category); ?>
+<?php $category = get_queried_object(); //var_dump($category); 
+
+	switch ($category->name) {
+		case 'Pão de Alho':
+			$cor = 'cor4';
+			$produto_img = 'paodealho-tradicional.jpg';
+			break;
+
+		case 'Massa para Pastel':
+			$cor = 'cor7';
+			$produto_img = 'massasparapastel-banana.jpg';
+			break;
+
+		case 'Massas para Lasanha':
+			$cor = 'cor2';
+			$produto_img = 'massaparalasanha.jpg';
+			break;
 		
-		<div class="breadcrumbs">
-			<ul>
-				<li><a href="<?php echo get_home_url(); ?>" title="Home">Home</a></li>
-				<li><a href="<?php echo get_home_url(); ?>/sala-de-prensa" title="Sala de Prensa">Sala de Prensa</a></li>
-				<li><?php echo $category->name; ?></li>
-			</ul>
+		default:
+			# code...
+			break;
+	}
+
+?>
+
+	<section class="box-content no-padding-top">			
+		<div class="bloco-img grande title-bottom" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-massaparapastel.jpg');">
+			<h2 class="center bg-<?php echo $cor; ?>"><span><?php echo $category->name; ?></span></h2>
 		</div>
 
-		<section class="box-content"> 
-			<div class="container">
+		<div class="container">	
+			<div class="breadcrumbs">
+				<ul>
+					<li><a href="<?php echo get_home_url(); ?>" title="Home">Home</a></li>
+					<li><a href="<?php echo get_permalink(get_page_by_path('produtos')); ?>" title="Produtos">Produtos</a></li>
+					<li><?php echo $category->name; ?></li>
+				</ul>
+			</div>
+		</div>
+	</section>
 
-				<div class="row">
-					<div class="col-12">
+	<section class="box-content list-prod padding-bottom-60">
+		<div class="container">
+			<div class="row">
+				<?php
+					while ( have_posts() ) : the_post(); ?>
 
-						<h2 class="center"><span><?php echo $category->name; ?></span></h2>
+			<div class="col-4">
+				
+				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
+					<div class="owl-stage-outer">
+						<div class="owl-stage">
 
-				<form action="<?php echo home_url(); ?>" class="form-busca margin-top-20" method="post">
-					<fieldset>
-						<input type="text" name="s" id="search" placeholder="Buscar en el sitio…">
-						<button type="submit" class="button"><i class="fas fa-search"></i></button>
-					</fieldset>
+							<div class="owl-item">
+								<a href="<?php the_permalink(); ?>" class="">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/<?php echo $produto_img; ?>">
+									<h4 class="<?php echo $cor; ?>"><?php the_title(); ?></h4>
+								</a>
+							</div>
 
-					<?php /*if(is_search()){ ?>
-						<div class="col-6">
-							<span class="result">
-								<span><?php _e( 'Resultados da pesquisa encontrados para', 'locale' ); ?>: "<?php the_search_query(); ?></span>
-							</span>
 						</div>
-					<?php } */?>
-				</form>
-
-
-						<ul class="list-category sala-prensa">
-							<li class="<?php if($category->term_id != 1): echo 'off'; endif; ?>">
-								<a href="<?php echo get_term_link(1); ?>">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-prensa-1.png" align="">
-									<span class="cor3">Prensa</span>
-								</a>
-							</li>
-							<li class="<?php if($category->term_id != 6): echo 'off'; endif; ?>">
-								<a href="<?php echo get_term_link(6); ?>">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-prensa-2.png" align="">
-									<span class="laranja">Medios</span>
-								</a>
-							</li>
-							<li class="<?php if($category->term_id != 7): echo 'off'; endif; ?>">
-								<a href="<?php echo get_term_link(7); ?>">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-prensa-3.png" align="">
-									<span class="verde-limao">Videos</span>
-								</a>
-							</li>
-							<li class="<?php if($category->term_id != 8): echo 'off'; endif; ?>">
-								<a href="<?php echo get_term_link(8); ?>">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-prensa-4.png" align="">
-									<span class="lilas">Fotos</span>
-								</a>
-							</li>
-							<li class="<?php if($category->term_id != 9): echo 'off'; endif; ?>">
-								<a href="<?php echo get_term_link(9); ?>">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-prensa-5.png" align="">
-									<span class="verde-claro">Documentación</span>
-								</a>
-							</li>
-							<li class="">
-								<a href="<?php echo get_permalink(get_page_by_path('contactenos')); ?>" class="<?php if ( is_page('contactenos') ) : echo 'ativo'; endif ?>">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-prensa-6.png" align="">
-									<span class="">Contacto</span>
-								</a>
-							</li>
-						</ul>
-
-						<p class="text-destaque center"><br><br>No se encontraron entradas</p>
-
 					</div>
 				</div>
 
 			</div>
-		</section>
 
-		<section class="box-content">
-			<div class="container">
-
-			</div>
-		</section>
-
-
-
-
-<?php /*
-<?php $category = get_queried_object(); //var_dump($category); ?>
-
-<!-- slide -->
-<section class="box-content box-slide">
-	<div class="slide">
-		<div class="carousel slide" data-ride="carousel" data-interval="6000" id="slide">
-
-			<div class="carousel-inner" role="listbox">
-
-				<?php if( have_rows('slide','option') ):
-					$slide = 0;
-					while ( have_rows('slide','option') ) : the_row();
-
-						if(get_sub_field('imagem','option')){
-							$slide = $slide+1; ?>
-
-							<div class="item <?php if($slide == 1){ echo 'active'; } ?>" style="background-image: url('<?php the_sub_field('imagem','option');?>')">
-
-								<div class="box-height">
-									<div class="box-texto">
-										
-										<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico_projetos.png" alt="<?php echo $category->name; ?>" />
-										<h2 class="title_page"><?php echo $category->name; ?></h2>
-
-										<p class="texto"><?php the_sub_field('texto',$category->taxonomy.'_'.$category->term_id); ?></p>
-										<?php if(get_sub_field('sub_texto',$category->taxonomy.'_'.$category->term_id)){ ?>
-											<p class="sub-texto"><?php the_sub_field('sub_texto',$category->taxonomy.'_'.$category->term_id); ?></p>
-										<?php } ?>
-
-									</div>
-								</div>
-								
-							</div>
-
-						<?php }
-
+						<?php //get_template_part( 'content-list-projetos', get_post_format() );
 					endwhile;
-				endif; ?>
+				?>
 
+				<?php paginacao(); ?>
 			</div>
-
-			<ol class="carousel-indicators">
-				
-				<?php for($i=0; $i<$slide; $i++){ ?>
-					<li data-target="#slide" data-slide-to="<?php echo $i; ?>" class="<?php if($i == 0){ echo 'active'; } ?>"></li>
-				<?php } ?>
-				
-			</ol>
-
 		</div>
-
-		<ul class="ico-page">
-			<?php
-				$args = array(
-				    'taxonomy'      => 'categoria_projeto',
-				    'parent'        => 0,
-				    'orderby'       => 'name',
-				    'order'         => 'ASC',
-				    'hierarchical'  => 1,
-				    'pad_counts'    => 0
-				);
-				$categories = get_categories( $args );
-				foreach ( $categories as $categoria ){ //var_dump($categoria); ?>
-
-						<li>
-							<a href="<?php echo get_term_link($categoria->term_id); ?>" title="<?php echo $categoria->name; ?>" class="cat_projeto <?php if($category->term_id != $categoria->term_id){ echo 'off'; } ?>">
-								<img src="<?php the_field('ico_listagem',$categoria->taxonomy.'_'.$categoria->term_id); ?>" class="" alt="<?php echo $categoria->name; ?>"/>
-								<span><?php echo $categoria->name; ?></span>
-							</a>
-						</li>
-
-						<?php /*<li>
-							<a href="javascript:" title="<?php echo $categoria->name; ?>" class="cat_projeto" rel="<?php echo $categoria->slug; ?>">
-								<img src="<?php the_field('ico_listagem',$categoria->taxonomy.'_'.$categoria->term_id); ?>" class="" alt="<?php echo $categoria->name; ?>"/>
-								<span><?php echo $categoria->name; ?></span>
-							</a>
-						</li>*/?>
-
-
-					
-				<?php
-				/*}
-			?>
-		</ul>
-
-	</div>
-</section> */ ?>
-
-<section class="box-content sombra">
-	<div class="container">
-		<div class="grid">
-			<div class="grid-sizer"></div>
-
-			<?php
-				while ( have_posts() ) : the_post();
-					//get_template_part( 'content-list-projetos', get_post_format() );
-				endwhile;
-			?>
-
-		</div>
-		<?php paginacao(); ?>
-
-	</div>
-</section>
+	</section>
 
 <?php get_footer(); ?>
 

@@ -7,12 +7,38 @@
 	position: relative;
 	@include clear;
 
+	&:after {
+		content: '';
+		width: 1000px;
+		height: 130px;
+		background: url('../images/bg-footer.jpg') no-repeat top left;
+		position: absolute;
+		top: -108px;
+		left: 390px;
+	}
+
+	&:before {
+		content: '';
+		width: 50%;
+		height: 35px;
+		background-color: #efefef;
+		position: absolute;
+		top: -35px;
+		right: 0px;
+		//z-index: 0;
+	}
+
 	[class*="col-"] {
 		padding: 0;
 	}
 
+	h4, p, span {
+		color: #000000;
+	}
+
 	h1 {
 		position: relative;
+		z-index: 10;
 		width: 200px;
 		top: -125px;
 		margin-bottom: -125px;
@@ -20,11 +46,12 @@
 
 
 	h4 {
-		margin-bottom: 25px;
+		margin-bottom: 15px;
 	}
 
 	p.sobre {
-		max-width: 280px;
+		max-width: 325px;
+		font-size: 1rem;
 	}
 
 	.contato-item {
@@ -51,12 +78,17 @@
 
 		&.mini {
 			span, a {
-				font-size: $font-size;
-				line-height: $font-size+.25;
+				font-size: 1rem;
+				line-height: 1rem;
 				font-weight: $light;
-				width: auto;
+				width: 270px;
 				text-align: center;
 				padding: 0;
+
+				strong {
+					font-size: 1rem;
+					line-height: 1rem;
+				}
 			}
 		}
 	}
@@ -77,6 +109,15 @@
 		a {
 			display: inline-block;
 			margin: 0 10px;
+			i {
+				color: #000000;
+			}
+
+			&:hover {
+				i {
+					color: $cor1;
+				}
+			}
 		}
 	}
 
@@ -109,9 +150,11 @@
 	.copy {
 		font-size: .8125rem;
 		padding: 20px 0 0;
+		color: #000000;
 
 		strong {
 			font-size: .8125rem;
+			color: #000000;
 		}
 	}
 }

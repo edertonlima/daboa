@@ -18,8 +18,8 @@
 				<div class="col-4">
 					<nav class="nav nav-footer">
 						<ul>
-							<li><a href="#" title="Home">Home</a></li>
-							<li><a href="#" title="">Sobre Nós</a></li>
+							<li><a href="<?php echo get_home_url(); ?>" title="Home">Home</a></li>
+							<li><a href="<?php echo get_permalink(get_page_by_path('sobre-nos')); ?>" title="">Sobre Nós</a></li>
 							<li>
 								<a href="#" title="">Produtos</a>
 								<ul>
@@ -28,7 +28,7 @@
 								</ul>
 							</li>
 							<li><a href="#" title="">Receitas</a></li>
-							<li><a href="#" title="">Contato</a></li>
+							<li><a href="<?php echo get_permalink(get_page_by_path('contato')); ?>" title="">Contato</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -46,7 +46,7 @@
 					</div>
 
 					<div class="contato-item mini">
-						<span>Email: comercial@massasdaboa.com.br</span>
+						<span><strong>Email:</strong> comercial@massasdaboa.com.br</span>
 					</div>
 
 					<div class="redes-sociais">
