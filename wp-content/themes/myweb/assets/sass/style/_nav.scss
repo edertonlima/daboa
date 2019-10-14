@@ -1,15 +1,21 @@
 .nav {
+	z-index: 10;
 	@include animacao();
 
 	ul {
 		display: table-cell;
 		@include box-sizing;
+		@include animacao();
 
 		li {
 			display: table-cell;
 			padding: 0px 5px;
 			text-align: center;
 			position: relative;
+
+			a {
+				@include animacao();
+			}
 		}
 	}
 
@@ -19,7 +25,6 @@
 		color: #ffffff;
 		font-weight: $regular;
 		padding: 0px 5px;
-		@include animacao();
 
 		i {
 			display: inline-block;
@@ -50,11 +55,13 @@
 		ul {
 			width: 100%;
 			display: table;
+			//@include animacao;
 
 			li {
 				padding: 19px 5px 18px;
 				position: relative;
 				text-align: center;
+				@include animacao();
 
 				&:before {
 					content: '';
@@ -92,6 +99,7 @@
 				&:first-child {
 					width: 250px;
 					padding: 0;
+					z-index: 9999;
 
 					a {
 						padding: 0;
@@ -244,31 +252,83 @@
 }
 
 
-// NAV FOOTER
-
 
 
 // MENU MOBILE
-.menu-mobile {
-	display: none;
-	float: left;
-	width: 52px;
-	height: 52px;
-	margin-top: 10px;
-	text-decoration: none;
-	z-index: 9999;
-	position: relative;
-	background: url('../images/menu_off.png') no-repeat center;
-	@include animacao;
+.nav {
+	.menu-mobile {
+		display: none;
+		text-decoration: none;
+		z-index: 9999;
+		top: 13px;
+		right: 15px;
+		position: absolute;
+		@include animacao-off;
 
-	&.active {
-		background-image: url('../images/menu_on.png');
-	}
+		i {
+			font-size: 2.125rem;
+			color: #ffffff;
+			display: none;
+		}
 
-	&:hover {
-		opacity: .5;
+		&:hover {
+			i {
+				color: $cor2;
+			}
+		}
+
+		&.ativo {
+			position: fixed;
+			top: 84px;
+			right: 30px;
+			
+			i {
+				//color: $cor2;
+
+				&.fa-bars {
+					display: none;
+				}	
+
+				&.fa-times {
+					display: block;
+				}	
+			}
+		}
 	}
 }
+
+
+
+.scroll_menu {
+	&:not(.ativo){
+		.nav {
+			&.nav-topo {
+				display: none;
+			}
+
+			&.nav-principal {
+				height: 50px;
+				margin-top: 20px;
+
+				&:before {
+					height: 50px;
+					width: 80px;
+				}
+
+				ul {
+					li {
+						padding: 14px 5px 13px;
+					}
+				}
+			}
+
+			.menu-mobile {
+				top: 8px;
+			}
+		}
+	}
+}
+
 
 
 // SUBMENU

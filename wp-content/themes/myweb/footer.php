@@ -72,7 +72,28 @@
 	<script type="text/javascript">
 		$(document).ready(function(){	
 
-	
+			$('.menu-mobile').click(function(){
+				if($(this).hasClass('ativo')){
+					$('.nav-principal ul').css('top','-100vh');
+					$(this).removeClass('ativo');
+					$('.header').removeClass('ativo');
+				}else{
+					$('.nav-principal ul').css('top','0px');
+					$(this).addClass('ativo');
+					$('.header').addClass('ativo');
+				}
+			});
+
+		});
+
+
+		$(window).scroll(function(){
+			scroll_body = $(window).scrollTop();
+			if(scroll_body > 100){
+				$('.header').addClass('scroll_menu');
+			}else{
+				$('.header').removeClass('scroll_menu');
+			}
 		});
 	</script>
 

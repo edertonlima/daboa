@@ -1,9 +1,9 @@
 <nav class="nav nav-topo">
 	<ul>
-		<li class="">
+		<li class="tel-principal">
 			SAC: 0800 646 1416 
 		</li>
-		<li class="ico-inline">
+		<li class="tel-whats ico-inline">
 			<i class="fab fa-whatsapp"></i>
 			(48) 9981.4573 <span>/</span> (48) 3432.3196
 		</li>

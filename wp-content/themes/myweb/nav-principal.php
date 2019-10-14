@@ -1,7 +1,7 @@
 <nav class="nav nav-principal">
 	
 		<ul>
-			<li>
+			<li class="logo">
 				<h1>
 					<a href="<?php echo get_home_url(); ?>" title="<?php //the_field('titulo', 'option'); ?>">
 						<img src="<?php //the_field('logo_header', 'option'); ?><?php echo get_template_directory_uri(); ?>/assets/images/daboa.png" alt="<?php //the_field('titulo', 'option'); ?>">
@@ -29,4 +29,9 @@
 				<a href="<?php echo get_permalink(get_page_by_path('contato')); ?>" title="">CONTATO</a>
 			</li>
 		</ul>
+
+		<a href="javascript:" class="menu-mobile">
+			<i class="fas fa-bars"></i>
+			<i class="fas fa-times"></i>
+		</a>
 </nav>

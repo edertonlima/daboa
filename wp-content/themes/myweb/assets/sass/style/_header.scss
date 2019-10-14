@@ -4,16 +4,44 @@
 	margin: 0px 0 20px 0;
 	position: relative;
 	z-index: 999;
+	@include animacao;
 	@include box-sizing;
 
-	&:before {
+	&:before, &:after {
 		content: "";
 		height: 60px;
 		width: 50%;
-		right: 0;
+		z-index: 0;
 		bottom: 0px;
 		position: absolute;
+		//@include animacao;
+	}
+
+	&:after {
+		left: 0;
+		background-color: #ffffff;
+	}
+
+	&:before {
+		right: 0;
 		background-color: $cor1;
+	}
+
+	&.scroll_menu {
+		position: fixed;
+		top: 0;
+		left: 0;
+
+		&:before, &:after {
+			height: 50px;
+		}
+
+		&:not(.ativo){
+			h1 {
+				width: 90px;
+				top: -20px;
+			}
+		}
 	}
 }
 

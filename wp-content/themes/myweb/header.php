@@ -47,7 +47,6 @@
 	$autor = 'Di20 Desenvolvimento'; 
 */ ?>
 
-<?php /*
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="shortcut icon" href="<?php the_field('favicon', 'option'); ?>" type="image/x-icon" />
 <link rel="icon" href="<?php the_field('favicon', 'option'); ?>" type="image/x-icon" />
@@ -88,7 +87,7 @@
 <!-- SOCIAL META -->
 
 <title><?php echo $titulo; ?></title>
-*/ ?>
+
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/assets/css/style.css" media="screen" />
 
@@ -103,19 +102,11 @@
 <script type="text/javascript">
 	//jQuery.noConflict();
 
-	/*jQuery(document).ready(function(){
+	//$(document).ready(function(){ alert();
 
-		jQuery('.menu-mobile').click(function(){
-			if(jQuery(this).hasClass('active')){
-				jQuery('.nav').css('top','-100vh');
-				jQuery(this).removeClass('active');
-				jQuery('.header').removeClass('active');
-			}else{
-				jQuery('.nav').css('top','0px');
-				jQuery(this).addClass('active');
-				jQuery('.header').addClass('active');
-			}
-		});
+
+
+		/*
 
 		if(jQuery('body').height() <= jQuery(window).height()){
 			jQuery('.footer').css({position: 'absolute', bottom: '0px'});
@@ -126,9 +117,9 @@
 		scroll_body = jQuery(window).scrollTop();
 		if(scroll_body > 400){
 			jQuery('.header').addClass('scroll_menu');
-		}
-	});	
-
+		}*/
+	//});	
+/*
 	jQuery(window).resize(function(){
 		jQuery('.menu-mobile').removeClass('active');
 		jQuery('.header').removeClass('active');
@@ -147,7 +138,7 @@
 		}else{
 			jQuery('.header').removeClass('scroll_menu');
 		}
-	});*/
+	});
 </script>
 
 <!-- ZOPIM -->
@@ -175,9 +166,7 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
 
 	<header class="header">
 		<div class="container">
-			<?php /*
-			<a href="javascript:" class="menu-mobile"></a>
-			*/ ?>
+
 			<?php get_template_part( 'nav-topo' ); ?>
 			<?php get_template_part( 'nav-principal' ); ?>
 
