@@ -38,7 +38,7 @@
 
 					<div class="contato-item">
 						<span>Fones:</span><h4>(48) 3432.3196</h4>
-						<span></span><h4>(48) 9981.45736</h4>
+						<span></span><h4 class="tel-2">(48) 9981.45736</h4>
 					</div>
 
 					<div class="contato-item">
@@ -46,19 +46,17 @@
 					</div>
 
 					<div class="contato-item mini">
-						<span><strong>Email:</strong> comercial@massasdaboa.com.br</span>
+						<span>Email:</span><a href="mailto:comercial@massasdaboa.com.br" title="comercial@massasdaboa.com.br"><h4>comercial@massasdaboa.com.br</h4></a>
 					</div>
 
 					<div class="redes-sociais">
-						<span>Siga-nos nas redes sociais e acompanhe as novidades!</span>
+						<span>Siga-nos nas redes sociais<span> e acompanhe as novidades</span>!</span>
 						<a href="https://www.facebook.com/ocpecuadorsa " title=""><i class="fab fa-facebook-f"></i></a>
 						<a href="<?php echo get_home_url(); ?>" title=""><i class="fab fa-instagram"></i></a>
 					</div>
 				</div>
 
-				<div class="col-12">
-					<p class="copy center"><strong>MDB Indústria Alimentiícia LTDA</strong> Rod. Lino Zanolli, nº 90, Distrito Ind., B. Aurora, Içara, SC</p>
-				</div>
+				<p class="copy center"><strong>MDB Indústria Alimentiícia LTDA </strong>Rod. Lino Zanolli, nº 90, Distrito Ind., B. Aurora, Içara, SC</p>
 			</div>
 		</div>
 	</div>	
@@ -89,9 +87,11 @@
 
 		$(window).scroll(function(){
 			scroll_body = $(window).scrollTop();
-			if(scroll_body > 100){
+			if(scroll_body > 10){
+				$('body').addClass('scroll_body');
 				$('.header').addClass('scroll_menu');
 			}else{
+				$('body').removeClass('scroll_body');
 				$('.header').removeClass('scroll_menu');
 			}
 		});

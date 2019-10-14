@@ -38,7 +38,7 @@
 		<h2 class="center bg-cor2">RECEITAS</h2>
 	</div>
 
-	<div class="container">
+	<div class="container mobile-750px-hide">
 		<h3 class="center uppercase"><strong class="cor2">EXPLORE</strong> nossas receitas e descubra sabores sem igual!</h3>
 			
 		<div class="carousel-itens owl-carousel owl-theme owl-loaded">
@@ -71,10 +71,11 @@
 
 <section class="box-content list-linha-prod">
 	<div class="bloco-img title-top" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-linhadeprodutos.jpg');">
-		<h2 class="title-mini center bg-cor3">LINHA DE PRODUTOS</h2>
+		<h2 class="title-mini center bg-cor3 mobile-750px-hide">LINHA DE PRODUTOS</h2>
+		<h2 class="title-mini center bg-cor3 mobile-750px-show">PRODUTOS</h2>
 	</div>
 
-	<div class="container">
+	<div class="container mobile-750px-hide">
 		<h3 class="center uppercase">Conheça nossa <strong class="cor3">LINHA COMPLETA</strong> de produtos daBoa!</h3>
 
 		<div class="row">
@@ -120,39 +121,42 @@
 
 <section class="box-content">
 	<div class="container">	
-		<div class="bloco-img grande title-bottom" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-contato.jpg');">
+		<div class="bloco-img grande title-bottom img-fale-conosco" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-contato.jpg');">
 			<h2 class="center bg-cor5">FALE CONOSCO</h2>
 		</div>
 
-		<h3 class="center">Dúvidas ou sugestões, entre em <strong class="cor5">CONTATO</strong> preenchendo esse formulário, ou fale conosco via telefone ou e-mail.</h3>
+		<h3 class="mobile-750px-hide center">Dúvidas ou sugestões, entre em <strong class="cor5">CONTATO</strong> preenchendo esse formulário, ou fale conosco via telefone ou e-mail.</h3>
+		<h3 class="mobile-750px-show center">Dúvidas ou sugestões, entre em contato:</h3>
 
 		<div class="content form">
-			<form class="fale-conosco row">
-				<div class="col-6 esq">
-					<fieldset>
-						<input type="text" name="" placeholder="NOME">
-					</fieldset>
+			<form class="fale-conosco">
+				<div class="row">
+					<div class="col-6 esq">
+						<fieldset>
+							<input type="text" name="" placeholder="NOME">
+						</fieldset>
 
-					<fieldset>
-						<input type="text" name="" placeholder="TELEFONE">
-					</fieldset>
+						<fieldset>
+							<input type="text" name="" placeholder="TELEFONE">
+						</fieldset>
 
-					<fieldset>
-						<input type="text" name="" placeholder="E-MAIL">
-					</fieldset>
+						<fieldset>
+							<input type="text" name="" placeholder="E-MAIL">
+						</fieldset>
 
-					<fieldset>
-						<input type="text" name="" placeholder="ASSUNTO">
-					</fieldset>
-				</div>
+						<fieldset>
+							<input type="text" name="" placeholder="ASSUNTO">
+						</fieldset>
+					</div>
 
-				<div class="col-6 dir">
-					<fieldset>
-						<textarea name="" placeholder="MENSAGEM"></textarea>
-					</fieldset>
-					<fieldset>
-						<button class="enviar">ENVIAR</button>
-					</fieldset>
+					<div class="col-6 dir">
+						<fieldset>
+							<textarea name="" placeholder="MENSAGEM"></textarea>
+						</fieldset>
+						<fieldset>
+							<button class="enviar">ENVIAR</button>
+						</fieldset>
+					</div>
 				</div>
 			</form>
 		</div>
@@ -223,6 +227,18 @@
 	*/
 </script>
 
+<!-- swipe start -->
+<script src='<?php echo get_template_directory_uri(); ?>/assets/js/jquery.touchSwipe.min.js'></script>
+<script type="text/javascript">
+    jQuery(".carousel").swipe({
+        swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+            if (direction == 'left') jQuery(this).carousel('next');
+            if (direction == 'right') jQuery(this).carousel('prev');
+        },
+        allowPageScroll: "vertical" 
+    });
+</script>
+<!-- swipe end -->
 
 
 

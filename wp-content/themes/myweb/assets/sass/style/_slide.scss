@@ -38,6 +38,15 @@
 	}
 }
 
+.scroll_body {
+	.slide {
+		height: 100vh;
+		.carousel, .carousel-inner, .carousel-item {
+			height: 100vh;
+		}
+	}
+}
+
 
 
 .owl-carousel {

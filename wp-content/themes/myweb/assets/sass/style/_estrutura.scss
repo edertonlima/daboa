@@ -7,6 +7,10 @@ body {
 	min-height: 100vh;
 	//min-width: $width;
 	background: #ffffff;
+
+	&.scroll_body {
+		padding-top: 70px;
+	}
 }
 
 body * {
@@ -26,16 +30,6 @@ body * {
 	position: relative;
 	@include box-sizing;
 	@include clear;
-
-	@media all and (max-width: 1000px){
-		padding-left: ($padding-container)/2;
-		padding-right: ($padding-container)/2;
-	}	
-
-	@media all and (max-width: 600px) {
-		padding-left: ($padding-container)/4;
-		padding-right: ($padding-container)/4;
-	}
 }
 
 .row {

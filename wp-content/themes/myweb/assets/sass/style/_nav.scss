@@ -209,6 +209,8 @@
 	}
 
 	&.nav-footer {
+		margin-top: 50px; 
+
 		li {
 			display: block;
 			text-align: left;
@@ -280,7 +282,7 @@
 		&.ativo {
 			position: fixed;
 			top: 84px;
-			right: 30px;
+			right: 40px;
 			
 			i {
 				//color: $cor2;
@@ -312,7 +314,7 @@
 
 				&:before {
 					height: 50px;
-					width: 80px;
+					width: 50px;
 				}
 
 				ul {

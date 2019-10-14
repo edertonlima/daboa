@@ -102,7 +102,7 @@ form {
 	}*/
 
 	&.fale-conosco {
-		&.row [class*="col-"] {
+		.row [class*="col-"] {
 			&.esq {
 				padding-right: 60px;
 			}
