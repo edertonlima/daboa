@@ -64,6 +64,10 @@
 
 @media all and (max-width: 980px){
 
+	.list-category {
+
+	}
+
 	.list-receita {
 		.bloco-img, .owl-carousel {
 			height: 40vh;
@@ -198,12 +202,23 @@
 						}
 
 						&:not(.logo) {
-							padding: 10px 0;
+							padding: 15px 0;
 
 							&.ativo {
-								padding: 10px;
+								//padding: 10px;
 							}
 						}
+
+						&:hover, &.ativo {
+							&:before {
+								height: 3px;
+								width: 100%;
+								left: 0;
+								top: auto;
+								bottom: 0;
+							}
+						}
+
 					}
 				}
 			}
@@ -248,6 +263,14 @@
 			margin-top: 20px;
 		}
 	}
+
+	.box-content {
+		.content {
+			.container {
+				padding: 0 20px;
+			}
+		}
+	}
 }
 
 
@@ -262,9 +285,51 @@
 		display: block;
 	}
 
+	form {
+		textarea {
+			height: 150px;
+		}
+	}
+	
+	.title-bottom {
+		text-align: center;
+		@include clear;
+
+		h2 {
+			position: relative;
+			margin: 75vh auto 0;
+			padding: 0 40px;
+			top: -40px;
+			bottom: auto;
+			left: auto;
+			width: auto;
+			max-width: none;
+			display: inline-block;
+		}
+	}
+
+	.box-content {
+		.content {
+			.destaque {
+				span {
+					padding: 0px;
+				}
+
+				&:after, &:before {
+					display: none;
+				}
+			}
+		}
+	}
+
 	.list-receita {
 		.bloco-img, .owl-carousel {
 			height: 75vh;
+			text-align: center;
+		}
+
+		h2 {
+			padding: 0 40px;
 		}
 	}
 
@@ -281,15 +346,16 @@
 	}
 
 	h2 {
-		max-width: 100%;
 		font-size: 1.75rem;
+		width: auto;
+		display: inline-block;
 	}
 
 	h3 {
 		padding: 30px 0;
 	}
 
-	.img-fale-conosco {
+	.block-img-hide {
 		background: none!important;
 		height: auto!important;
 		margin: 0;
@@ -297,6 +363,7 @@
 		h2 {
 			position: relative;
 			bottom: 0;
+			top: 0;
 			left: 0;
 			margin: 0 auto;
 		}

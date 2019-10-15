@@ -151,7 +151,7 @@
 
 
 .list-category {
-	display: table;
+	//display: table;
 	width: 100%;
 	margin: 0px 0;
 	padding: 10px 0;
@@ -159,10 +159,55 @@
 	height: 110px;
 	@include box-sizing;
 
-	li {
-		width: 200px;
-		padding: 0 10px;
-		display: table-cell;
+	.carousel-list-category {
+		.owl-dots {
+			display: none;
+		}
+
+		.owl-nav {
+			position: absolute;
+			top: 50%;
+			height: 0px;
+			margin: 0;
+			width: 100%;
+
+			button {
+				height: 24px;
+				margin: 0;
+				position: absolute;
+				top: -12px;
+
+				i {
+					color: #ffffff;
+					font-size: 1.5rem;
+				}
+
+				&.owl-prev {
+					left: -20px;
+				}
+
+				&.owl-next {
+					right: -20px;
+				}
+
+				&.disabled {
+					display: none;
+				}
+
+				&:hover {
+					background-color: transparent;
+					i {
+						color: $cor1;
+					}
+				}
+			}
+		}
+	}
+
+	.item-category, li {
+		//width: 200px;
+		//padding: 0 10px;
+		//display: table-cell;
 		text-align: center;
 		vertical-align: top;
 

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <!-- slide --> 
-<section class="box-content box-slide"> 
+<section class="box-content box-slide no-padding-bottom"> 
 	<div class="slide">
 
 		<div id="slide-home" class="carousel slide" data-ride="carousel" data-interval="8000">
@@ -32,7 +32,7 @@
 
 	</div>
 
-					<div class="list-category bg-cor3">
+					<div class="list-category bg-cor3" style="display: none;">
 						<ul class="container">
 							<li class="<?php if($category->term_id != 1): echo 'off'; endif; ?>">
 								<a href="<?php echo get_term_link(1); ?>">
@@ -46,6 +46,7 @@
 									<span class="txt cor3"><span>Massas para Lasanha</span></span>
 								</a>
 							</li>
+
 							<li class="<?php if($category->term_id != 3): echo 'off'; endif; ?>">
 								<a href="<?php echo get_term_link(3); ?>">
 									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-massasparapastel.png" align="">
@@ -54,6 +55,32 @@
 							</li>
 						</ul>
 					</div>
+
+	<div class="list-category bg-cor3">
+		<div class="container">
+
+				<div class="carousel-list-category owl-carousel owl-theme owl-loaded">
+					<div class="owl-stage-outer">
+						<div class="owl-stage">
+
+							<?php for ($i=0; $i < 8; $i++) {  ?>
+							<div class="owl-item">
+									<div class="item-category <?php if($category->term_id != 3): echo 'off'; endif; ?>">
+										<a href="<?php echo get_term_link(3); ?>">
+											<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-massasparapastel.png" align="">
+											<span class="txt cor3"><span><?php echo $i; ?> - Massas para Pastel</span></span>
+										</a>
+									</div>
+							</div>
+							<?php } ?>
+
+						</div>
+					</div>
+				</div>
+
+		</div>
+	</div>
+
 
 	<div class="container">	
 		<div class="breadcrumbs">
@@ -65,10 +92,10 @@
 	</div>
 </section>
 
-<section class="box-content list-linha-prod padding-bottom-60">
+<section class="box-content list-linha-prod no-padding-top">
 	<div class="container">
 		<div class="row">
-			<div class="col-6">
+			<div class="col-6 padding-bottom-60">
 				
 				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
 					<div class="owl-stage-outer">
@@ -86,7 +113,7 @@
 				<h2 class="full center bg-cor4"><span>Pão de Alho</span></h2>
 
 			</div>
-			<div class="col-6">
+			<div class="col-6 padding-bottom-60">
 				
 				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
 					<div class="owl-stage-outer">
@@ -104,8 +131,7 @@
 				<h2 class="full center bg-cor2"><span>Massas para Lasanha</span></h2>
 
 			</div>
-
-			<div class="col-6">
+			<div class="col-6 padding-bottom-60">
 				
 				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
 					<div class="owl-stage-outer">
@@ -123,6 +149,7 @@
 				<h2 class="full center bg-cor7"><span>Massas para Pastel</span></h2>
 
 			</div>
+
 		</div>		
 	</div>
 </section>
@@ -133,6 +160,37 @@
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/owl.carousel.min.js"></script>
 
 <script type="text/javascript">
+	$('.carousel-list-category').owlCarousel({
+		loop:false,
+		margin:10,
+		responsiveClass:true,
+		nav:true,
+		navText: ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>'],
+		//rtl:true,
+		responsive:{
+			0:{
+				items:2,
+				nav:true
+			},
+			350:{
+				items:3,
+				nav:true
+			},
+			540:{
+				items:4,
+				nav:true
+			},
+			640:{
+				items:6,
+				nav:true
+			},
+			740:{
+				items:8,
+				nav:true
+			}
+		}
+	})
+
 	$('.carousel-itens').owlCarousel({
 		loop:true,
 		margin:40,

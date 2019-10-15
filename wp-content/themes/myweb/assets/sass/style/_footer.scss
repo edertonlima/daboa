@@ -1,5 +1,5 @@
 .footer {
-	margin-top: 150px;
+	margin-top: 60px;
 	width: 100%;
 	padding: 40px 0 20px;
 	background-color: #efefef;
@@ -19,7 +19,7 @@
 		//z-index: 0;
 
 
-		display: none!important;
+		//display: none!important;
 	}
 
 	[class*="col-"] {
@@ -48,7 +48,7 @@
 			z-index: 0;
 
 
-			display: none!important;
+			//display: none!important;
 		}
 
 		a {
@@ -180,5 +180,11 @@
 			font-size: .8125rem;
 			color: #000000;
 		}
+	}
+}
+
+.blog {
+	.footer {
+		margin-top: 0px;
 	}
 }

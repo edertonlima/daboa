@@ -75,7 +75,7 @@
 					transition: all .25s;
 				}
 
-				&:hover {
+				&:hover, &.ativo {
 					&:before {
 						height: 5px;
 						width: 100%;
@@ -84,15 +84,15 @@
 				}
 
 				&.ativo {
-					background-color: #ffffff;
+					//background-color: #ffffff;
 
 					a {
 						font-weight: $bold;
-						color: $cor1;
+						//color: $cor1;
 					}
 
 					i {
-						color: $cor2;
+						//color: $cor2;
 					}
 				}
 
