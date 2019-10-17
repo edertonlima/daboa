@@ -23,6 +23,59 @@
 	.bloco-img {
 		height: 46vh;
 	}
+
+	.carousel-itens-produtos {
+		width: 100%;
+		padding: 0 35px;
+		.owl-stage-outer {
+			//padding: 0 35px;
+		}
+		.owl-dots {
+			display: none;
+		}
+		.owl-nav {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			height: 0;
+			width: 100%;
+			margin: 0;
+
+			button {
+				height: auto;
+				margin: -1rem 0 0 0;
+				position: absolute;
+				background: transparent;
+
+				i {
+					font-size: 2rem;
+					color: #bbbbbb;
+				}
+
+				&.owl-prev {
+					left: 10px;
+				}
+				&.owl-next {
+					right: 10px;
+				}
+
+				&.owl-prev, &.owl-next {
+					&:hover {
+						background: transparent!important;
+						i {
+							color: $cor3;
+						}
+					}
+				}
+
+				&.disabled {
+					i {
+						color: #bbbbbb!important;
+					}
+				}
+			}
+		}
+	}
 }
 
 .list-prod {
@@ -33,6 +86,12 @@
 		font-size: 1.125rem;
 		line-height: 1.5rem;
 	} 
+
+	.row {
+		.col-4 {
+			margin-bottom: 60px;
+		}
+	}
 }
 
 .detalhe-prod {
@@ -84,9 +143,24 @@
 			font-weight: $bold;
 			margin-bottom: 10px;
 			font-size: 1.5rem;
+
+			i {
+				display: none;
+				font-weight: $bold;
+				font-size: 1.5rem;
+				padding: 5px 5px 5px 15px;
+				position: relative;
+				top: 2px;
+				cursor: pointer;
+				@include animacao;
+			}
 		}
 
 		.item-preparo {
+			@media all and (min-width: 981px){
+				display: block!important;
+			}
+
 			li {
 				padding: 30px 60px 30px 20px;
 				margin-bottom: 20px;

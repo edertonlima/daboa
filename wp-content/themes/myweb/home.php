@@ -106,6 +106,16 @@
 									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/paodealho-tradicional.jpg">
 								</a>
 							</div>
+							<div class="owl-item">
+								<a href="<?php echo get_term_link(1); ?>" class="hover-prod" style="opacity: 0">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/paodealho-tradicional.jpg">
+								</a>
+							</div>
+							<div class="owl-item">
+								<a href="<?php echo get_term_link(1); ?>" class="hover-prod" style="opacity: 0">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/paodealho-tradicional.jpg">
+								</a>
+							</div>
 
 						</div>
 					</div>
@@ -125,6 +135,12 @@
 								</a>
 							</div>
 
+							<div class="owl-item">
+								<a href="<?php echo get_term_link(2); ?>" class="hover-prod" style="opacity: 0">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/massaparalasanha.jpg">
+								</a>
+							</div>
+
 						</div>
 					</div>
 				</div>
@@ -136,6 +152,12 @@
 				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
 					<div class="owl-stage-outer">
 						<div class="owl-stage">
+
+							<div class="owl-item">
+								<a href="<?php echo get_term_link(3); ?>" class="hover-prod">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/massasparapastel-banana.jpg">
+								</a>
+							</div>
 
 							<div class="owl-item">
 								<a href="<?php echo get_term_link(3); ?>" class="hover-prod">
@@ -191,7 +213,7 @@
 		}
 	})
 
-	$('.carousel-itens').owlCarousel({
+	/*$('.carousel-itens').owlCarousel({
 		loop:true,
 		margin:40,
 		responsiveClass:true,
@@ -213,10 +235,10 @@
 				loop:false
 			}
 		}
-	})
+	})*/
 
 	$('.carousel-itens-produtos').owlCarousel({
-		loop:true,
+		loop:false,
 		margin:0,
 		responsiveClass:true,
 		nav:true,
@@ -226,15 +248,6 @@
 			0:{
 				items:1,
 				nav:true
-			},
-			600:{
-				items:1,
-				nav:false
-			},
-			1000:{
-				items:1,
-				nav:true,
-				loop:false
 			}
 		}
 	})

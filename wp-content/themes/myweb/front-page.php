@@ -120,50 +120,48 @@
 </section>
 
 <section class="box-content">
-	<div class="content">	
-		<div class="container">
+	<div class="container container-mobile">
 
-			<div class="bloco-img grande title-bottom block-img-hide" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-contato.jpg');">
-				<h2 class="center bg-cor5">FALE CONOSCO</h2>
-			</div>
-
-			<h3 class="mobile-750px-hide center">Dúvidas ou sugestões, entre em <strong class="cor5">CONTATO</strong> preenchendo esse formulário, ou fale conosco via telefone ou e-mail.</h3>
-			<h3 class="mobile-750px-show center">Dúvidas ou sugestões, entre em contato:</h3>
-
-			<div class="content form">
-				<form class="fale-conosco">
-					<div class="row">
-						<div class="col-6 esq">
-							<fieldset>
-								<input type="text" name="" placeholder="NOME">
-							</fieldset>
-
-							<fieldset>
-								<input type="text" name="" placeholder="TELEFONE">
-							</fieldset>
-
-							<fieldset>
-								<input type="text" name="" placeholder="E-MAIL">
-							</fieldset>
-
-							<fieldset>
-								<input type="text" name="" placeholder="ASSUNTO">
-							</fieldset>
-						</div>
-
-						<div class="col-6 dir">
-							<fieldset>
-								<textarea name="" placeholder="MENSAGEM"></textarea>
-							</fieldset>
-							<fieldset>
-								<button class="enviar">ENVIAR</button>
-							</fieldset>
-						</div>
-					</div>
-				</form>
-			</div>
-
+		<div class="bloco-img grande title-bottom block-img-hide" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-contato.jpg');">
+			<h2 class="center bg-cor5">FALE CONOSCO</h2>
 		</div>
+
+		<h3 class="mobile-750px-hide center">Dúvidas ou sugestões, entre em <strong class="cor5">CONTATO</strong> preenchendo esse formulário, ou fale conosco via telefone ou e-mail.</h3>
+		<h3 class="mobile-750px-show center">Dúvidas ou sugestões, entre em contato:</h3>
+
+		<div class="content form">
+			<form class="fale-conosco">
+				<div class="row">
+					<div class="col-6 esq">
+						<fieldset>
+							<input type="text" name="" placeholder="NOME">
+						</fieldset>
+
+						<fieldset>
+							<input type="text" name="" placeholder="TELEFONE">
+						</fieldset>
+
+						<fieldset>
+							<input type="text" name="" placeholder="E-MAIL">
+						</fieldset>
+
+						<fieldset>
+							<input type="text" name="" placeholder="ASSUNTO">
+						</fieldset>
+					</div>
+
+					<div class="col-6 dir">
+						<fieldset>
+							<textarea name="" placeholder="MENSAGEM"></textarea>
+						</fieldset>
+						<fieldset>
+							<button class="enviar">ENVIAR</button>
+						</fieldset>
+					</div>
+				</div>
+			</form>
+		</div>
+
 	</div>
 </section>
 

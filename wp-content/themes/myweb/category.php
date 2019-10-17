@@ -65,6 +65,44 @@
 
 			</div>
 
+			<div class="col-4">
+				
+				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
+					<div class="owl-stage-outer">
+						<div class="owl-stage">
+
+							<div class="owl-item">
+								<a href="<?php the_permalink(); ?>" class="">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/<?php echo $produto_img; ?>">
+									<h4 class="<?php echo $cor; ?>"><?php the_title(); ?></h4>
+								</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-4">
+				
+				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
+					<div class="owl-stage-outer">
+						<div class="owl-stage">
+
+							<div class="owl-item">
+								<a href="<?php the_permalink(); ?>" class="">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/<?php echo $produto_img; ?>">
+									<h4 class="<?php echo $cor; ?>"><?php the_title(); ?></h4>
+								</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+
 						<?php //get_template_part( 'content-list-projetos', get_post_format() );
 					endwhile;
 				?>

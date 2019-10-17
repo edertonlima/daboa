@@ -33,9 +33,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-6 no-padding">
+					<div class="col-6 no-padding cont-modo-preparo">
 						<div class="modo-preparo">
-							<h3 class="cor7">Modo de Preparo:</h3>
+							<h3 class="cor7">Modo de Preparo: <i class="fas fa-chevron-down cor7" id="toggle-preparo"></i></h3>
 							<ul class="item-preparo">
 								<li class="bg-cinza">
 									<span class="nun-preparo"><span>1</span></span>
@@ -96,7 +96,7 @@
 			</div>
 		</section>
 
-		<section class="box-content no-padding-top list-linha-prod">
+		<section class="box-content no-padding-top list-linha-prod padding-footer">
 			<div class="container">
 				<h3 class="center">Veja outros produtos:</h3>
 				<div class="carousel-itens-prod owl-carousel owl-theme owl-loaded owl-dots-off">
@@ -202,7 +202,27 @@
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/owl.carousel.min.js"></script>
 
 <script type="text/javascript">
-	$('.img-produto').height($('.modo-preparo').height());
+	if($(window).width() < 981){
+		$('#toggle-preparo').click(function(){
+			if($(this).hasClass('on')){
+				$('.item-preparo').slideUp();
+				$(this).removeClass('on');
+				$(this).removeClass('fa-flip-vertical');
+			}else{
+				$('.item-preparo').slideDown('show');
+				$(this).addClass('on');
+				$(this).addClass('fa-flip-vertical');
+			}
+		});
+	}
+
+	if($(window).width() > 1201){
+		height_img = $('.img-produto').height();
+		height_preparo = $('.modo-preparo').height();
+		if((height_preparo > height_img) && (height_preparo < (height_img*1.5))){
+			$('.img-produto').height(height_preparo);
+		}
+	}
 
 	$('.carousel-itens').owlCarousel({
 		loop:true,

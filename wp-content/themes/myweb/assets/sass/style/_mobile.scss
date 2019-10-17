@@ -61,16 +61,83 @@
 }
 
 
+@media all and (max-width: 1200px){
+	.detalhe-prod {
+		.img-produto {
+			height: auto!important;
+		}
+		.modo-preparo {
+			.item-preparo {
+				li {
+					padding-right: 20px;
+					.ico-preparo {
+						width: 150px;
+					}
+
+					.txt-preparo {
+						padding-left: 20px;
+					}
+				}
+			}
+		}
+	}
+}
 
 @media all and (max-width: 980px){
 
-	.list-category {
+	.detalhe-prod {
+		.row {
+			 .col-6 {
+				width: 100%;
+				max-width: 590px;
+				display: block;
+				margin: 0 auto 60px;
+				float: none;
+			}
 
+			.cont-modo-preparo {
+				margin-bottom: 0;
+			}
+		}
+		.content {
+			&.ingredientes {
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+		.img-produto {
+			
+		}
+		.modo-preparo {
+			h3 {
+				text-align: center;
+
+				i {
+					display: inline-block;
+				}
+			}
+			.item-preparo {
+				display: none;
+
+				&.on {
+					display: block;
+				}
+			}
+		}
 	}
 
 	.list-receita {
 		.bloco-img, .owl-carousel {
 			height: 40vh;
+		}
+	}
+
+	.list-prod {
+		.row {
+			.col-4 {
+				width: 50%;
+				max-width: 50%;
+			}
 		}
 	}
 
@@ -265,10 +332,8 @@
 	}
 
 	.box-content {
-		.content {
-			.container {
-				padding: 0 20px;
-			}
+		.container-mobile {
+			padding: 0 20px;
 		}
 	}
 }
@@ -285,6 +350,56 @@
 		display: block;
 	}
 
+	.list-prod {
+		.row {
+			.col-4 {
+				width: 100%;
+				max-width: 100%;
+			}
+		}
+	}
+
+	.list-receita {
+		.tit-slide-receita {
+			display: block;
+			margin: 0 auto;
+			width: 210px;
+		}
+	}
+
+	.contato-info {
+		&:before {
+			display: none;
+		}
+
+		.container {
+			padding: 0;
+		}
+
+		.item-contato-info {
+			display: block;
+			width: 100%;
+			margin-top: 50px;
+			position: relative;
+
+			&:before {
+				content: '';
+				height: 80px;
+				width: 100%;
+				background-color: $cor5;
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: 0;
+			}
+
+			.ico-contato {
+				z-index: 1;
+				position: relative;
+			}
+		}
+	}
+
 	form {
 		textarea {
 			height: 150px;
@@ -297,7 +412,7 @@
 
 		h2 {
 			position: relative;
-			margin: 75vh auto 0;
+			margin: 70vh auto 0;
 			padding: 0 40px;
 			top: -40px;
 			bottom: auto;
@@ -324,7 +439,7 @@
 
 	.list-receita {
 		.bloco-img, .owl-carousel {
-			height: 75vh;
+			height: 70vh;
 			text-align: center;
 		}
 
@@ -337,11 +452,19 @@
 		.bloco-img {
 			height: 75vh;
 		}
+
+		.row .col-6 {
+			padding-right: 0;
+			padding-left: 0;
+		}
+
+		.carousel-itens-produtos {
+		}	
 	}
 
 	.bloco-img {
 		&.grande {
-			height: 75vh;
+			height: 70vh;
 		}
 	}
 
@@ -466,6 +589,34 @@
 
 					&.tel-principal {
 						padding-left: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+@media all and (max-width: 480px){
+	.detalhe-prod {
+		.modo-preparo {
+			.item-preparo {
+				li {
+					padding: 20px 0;
+
+					.nun-preparo {
+						top: 25px;
+						left: 5px;
+					}
+
+					.ico-preparo {
+						width: 150px;
+					}
+
+					.txt-preparo {
+line-height: 1.125rem;
+font-size: 1rem;
 					}
 				}
 			}
