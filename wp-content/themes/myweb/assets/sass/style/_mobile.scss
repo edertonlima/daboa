@@ -85,6 +85,10 @@
 
 @media all and (max-width: 980px){
 
+	.header.scroll_menu:not(.ativo) h1 {
+		left: 0;
+	}
+
 	.detalhe-prod {
 		.row {
 			 .col-6 {

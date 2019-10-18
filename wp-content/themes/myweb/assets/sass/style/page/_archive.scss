@@ -234,6 +234,13 @@
 	@include box-sizing;
 
 	.carousel-list-category {
+
+		.owl-item {
+			&:last-child {
+				margin-right: 0px!important;
+			}
+		}
+
 		.owl-dots {
 			display: none;
 		}

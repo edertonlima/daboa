@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <!-- slide --> 
-<section class="box-content box-slide"> 
+<section class="box-content box-slide no-padding-bottom"> 
 	<div class="slide">
 
 		<div id="slide-home" class="carousel slide" data-ride="carousel" data-interval="8000">
@@ -12,11 +12,11 @@
 			</ol>
 
 			<div class="carousel-inner">
-				<div class="carousel-item active" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/slide-1.jpg');">
+				<div class="carousel-item active" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-produtos.jpg');">
 				</div>
-				<div class="carousel-item" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/slide-1.jpg');">
+				<div class="carousel-item" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-produtos.jpg');">
 				</div>
-				<div class="carousel-item" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/slide-1.jpg');">
+				<div class="carousel-item" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-produtos.jpg');">
 				</div>
 			</div>
 
@@ -31,145 +31,84 @@
 		</div>
 
 	</div>
-</section>
 
-<?php
-	$receitas_list = array(
-			'posts_per_page' => 10,
-			'post_type' => 'receitas'
-		);
-	query_posts( $receitas_list );
+					<div class="list-category bg-cor3" style="display: none;">
+						<ul class="container">
+							<li class="<?php if($category->term_id != 1): echo 'off'; endif; ?>">
+								<a href="<?php echo get_term_link(1); ?>">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-paodealho.png" align="">
+									<span class="txt cor3"><span>Pão de Alho</span></span>
+								</a>
+							</li>
+							<li class="<?php if($category->term_id != 2): echo 'off'; endif; ?>">
+								<a href="<?php echo get_term_link(2); ?>">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-massasparalasanha.png" align="">
+									<span class="txt cor3"><span>Massas para Lasanha</span></span>
+								</a>
+							</li>
 
-	if(have_posts()){ ?>
+							<li class="<?php if($category->term_id != 3): echo 'off'; endif; ?>">
+								<a href="<?php echo get_term_link(3); ?>">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-massasparapastel.png" align="">
+									<span class="txt cor3"><span>Massas para Pastel</span></span>
+								</a>
+							</li>
+						</ul>
+					</div>
 
-		<section class="box-content list-receita">
-			<div class="bloco-img title-top" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-receita.jpg');">
-				<a href="<?php echo get_home_url(); ?>/receitas"><h2 class="center bg-cor2">RECEITAS</h2></a>
-			</div>
+	<div class="list-category bg-cor2">
+		<div class="container">
 
-			<div class="container mobile-750px-hide">
-				<h3 class="center uppercase"><strong class="cor2">EXPLORE</strong> nossas receitas e descubra sabores sem igual!</h3>
-					
-				<div class="carousel-itens owl-carousel owl-theme owl-loaded">
+				<div class="carousel-list-category owl-carousel owl-theme owl-loaded">
 					<div class="owl-stage-outer">
 						<div class="owl-stage">
 
-							<?php while ( have_posts() ) : the_post(); ?>
-								<div class="owl-item">
-									<?php get_template_part( 'content-receita', get_post_format() ); ?>
-								</div>
-							<?php endwhile;
-							wp_reset_query(); ?>
-								
+							<?php for ($i=0; $i < 8; $i++) {  ?>
+							<div class="owl-item">
+									<div class="item-category <?php if($category->term_id != 3): echo 'off'; endif; ?>">
+										<a href="<?php echo get_term_link(3); ?>">
+											<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-massasparapastel.png" align="">
+											<span class="txt cor3"><span><?php echo $i; ?> - Massas para Pastel</span></span>
+										</a>
+									</div>
+							</div>
+							<?php } ?>
+
 						</div>
 					</div>
-				</div>	
-			</div>
-		</section>
+				</div>
 
-	<?php }
-?>
-
-<section class="box-content list-linha-prod">
-	<div class="bloco-img title-top" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-linhadeprodutos.jpg');">
-		<a href="<?php echo get_home_url(); ?>/produtos">
-			<h2 class="title-mini center bg-cor3 mobile-750px-hide">LINHA DE PRODUTOS</h2>
-			<h2 class="title-mini center bg-cor3 mobile-750px-show">PRODUTOS</h2>
-		</a>
+		</div>
 	</div>
 
-	<div class="container mobile-750px-hide">
-		<a href="<?php echo get_home_url(); ?>/produtos">
-			<h3 class="center uppercase">Conheça nossa <strong class="cor3">LINHA COMPLETA</strong> de produtos daBoa!</h3>
-		</a>
 
+	<div class="container">	
+		<div class="breadcrumbs">
+			<ul>
+				<li><a href="<?php echo get_home_url(); ?>" title="Home">Home</a></li>
+				<li>Receitas</li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<section class="box-content list-linha-prod no-padding-top">
+	<div class="container">
 		<div class="row">
-			<div class="col-6">
-				
-				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
-					<div class="owl-stage-outer">
-						<div class="owl-stage">
 
-							<div class="owl-item">
-								<a href="<?php echo get_term_link(3); ?>" class="hover-prod">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/massasparapastel-banana.jpg">
-								</a>
-							</div>
+			<?php while ( have_posts() ) : the_post(); ?>
 
-						</div>
-					</div>
+				<div class="col-6 padding-bottom-60">
+
+					<?php get_template_part( 'content-receita', get_post_format() ); ?>
+					
 				</div>
-				<h2 class="full center bg-cor7"><span>Massas para Pastel</span></h2>
 
-			</div>
-			<div class="col-6">
-				
-				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
-					<div class="owl-stage-outer">
-						<div class="owl-stage">
+			<?php endwhile; ?>
 
-							<div class="owl-item">
-								<a href="<?php echo get_term_link(2); ?>" class="hover-prod" style="opacity: 0">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/massaparalasanha.jpg">
-								</a>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				<h2 class="full center bg-cor2"><span>Massa para Lasanha</span></h2>
-
-			</div>
 		</div>		
 	</div>
 </section>
-
-<section class="box-content">
-	<div class="container container-mobile">
-
-		<div class="bloco-img grande title-bottom block-img-hide" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-contato.jpg');">
-			<h2 class="center bg-cor5">FALE CONOSCO</h2>
-		</div>
-
-		<h3 class="mobile-750px-hide center">Dúvidas ou sugestões, entre em <strong class="cor5">CONTATO</strong> preenchendo esse formulário, ou fale conosco via telefone ou e-mail.</h3>
-		<h3 class="mobile-750px-show center">Dúvidas ou sugestões, entre em contato:</h3>
-
-		<div class="content form">
-			<form class="fale-conosco">
-				<div class="row">
-					<div class="col-6 esq">
-						<fieldset>
-							<input type="text" name="" placeholder="NOME">
-						</fieldset>
-
-						<fieldset>
-							<input type="text" name="" placeholder="TELEFONE">
-						</fieldset>
-
-						<fieldset>
-							<input type="text" name="" placeholder="E-MAIL">
-						</fieldset>
-
-						<fieldset>
-							<input type="text" name="" placeholder="ASSUNTO">
-						</fieldset>
-					</div>
-
-					<div class="col-6 dir">
-						<fieldset>
-							<textarea name="" placeholder="MENSAGEM"></textarea>
-						</fieldset>
-						<fieldset>
-							<button class="enviar">ENVIAR</button>
-						</fieldset>
-					</div>
-				</div>
-			</form>
-		</div>
-
-	</div>
-</section>
-
 
 <?php get_footer(); ?>
 
@@ -177,7 +116,38 @@
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/owl.carousel.min.js"></script>
 
 <script type="text/javascript">
-	$('.carousel-itens').owlCarousel({
+	$('.carousel-list-category').owlCarousel({
+		loop:false,
+		margin:10,
+		responsiveClass:true,
+		nav:true,
+		navText: ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>'],
+		//rtl:true,
+		responsive:{
+			0:{
+				items:2,
+				nav:true
+			},
+			350:{
+				items:3,
+				nav:true
+			},
+			540:{
+				items:4,
+				nav:true
+			},
+			640:{
+				items:6,
+				nav:true
+			},
+			740:{
+				items:8,
+				nav:true
+			}
+		}
+	})
+
+	/*$('.carousel-itens').owlCarousel({
 		loop:true,
 		margin:40,
 		responsiveClass:true,
@@ -199,10 +169,10 @@
 				loop:false
 			}
 		}
-	})
+	})*/
 
 	$('.carousel-itens-produtos').owlCarousel({
-		loop:true,
+		loop:false,
 		margin:0,
 		responsiveClass:true,
 		nav:true,
@@ -212,15 +182,6 @@
 			0:{
 				items:1,
 				nav:true
-			},
-			600:{
-				items:1,
-				nav:false
-			},
-			1000:{
-				items:1,
-				nav:true,
-				loop:false
 			}
 		}
 	})
@@ -233,6 +194,7 @@
 	$('.owl-next').css('margin-left',qtddot);
 	*/
 </script>
+
 
 
 
