@@ -3,13 +3,13 @@
 	<?php while ( have_posts() ) : the_post(); 
 
 		$cor = 'cor7';
-		$produto_img = 'massaparalasanha.jpg';
-		$categorias = wp_get_post_terms( $post->ID, 'category' )[0]; //var_dump($categorias); ?>
+		$imagem_produto = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'list-receita-produto' );
+		$categorias = wp_get_post_terms( $post->ID, 'category' )[0]; 
+		$cor_category = get_field('cor_categoria', $categorias->taxonomy.'_'.$categorias->term_id); ?>
 			
-
 		<section class="box-content no-padding-top detalhe-prod">			
-			<div class="bloco-img grande title-bottom" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-pastel.jpg');">
-				<h2 class="center bg-<?php echo $cor; ?>"><span><?php the_title(); ?></span></h2>
+			<div class="bloco-img grande title-bottom" style="background-image: url('<?php the_field('imagem_principal_topo'); ?>);">
+				<h2 class="center bg-<?php echo $cor; ?>" style="background-color: <?php echo $cor_category; ?>"><span><?php the_title(); ?></span></h2>
 			</div>
 
 			<div class="container">	
@@ -25,35 +25,34 @@
 				<div class="row">
 					
 					<div class="col-6">
-						<div class="img-produto">
+						<div class="img-produto" style="border-color: <?php echo $cor_category; ?>">
 							<div class="mask-item vertical-center">
 								<span class="content-vertical">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/massasparapastel-banana.png">
+									<img src="<?php if($imagem_produto[0]){ echo $imagem_produto[0]; } ?>" alt="<?php the_title(); ?>">
 								</span>
 							</div>
 						</div>
 					</div>
 					<div class="col-6 no-padding cont-modo-preparo">
 						<div class="modo-preparo">
-							<h3 class="cor7">Modo de Preparo: <i class="fas fa-chevron-down cor7" id="toggle-preparo"></i></h3>
+							<h3 style="color: <?php echo $cor_category; ?>">Modo de Preparo: <i class="fas fa-chevron-down cor7" id="toggle-preparo"></i></h3>
 							<ul class="item-preparo">
-								<li class="bg-cinza">
-									<span class="nun-preparo"><span>1</span></span>
-									<img class="ico-preparo" src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-preparo-1.png">
-									<span class="txt-preparo">Retire a massa da embalagem, separe em unidades, retire o filme plástico e recheie.</span>
-								</li>
 
-								<li class="bg-cinza">
-									<span class="nun-preparo"><span>2</span></span>
-									<img class="ico-preparo" src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-preparo-2.png">
-									<span class="txt-preparo">Em seguida feche o <strong>Pastel Da Boa</strong> (tipo envelope friccionando com um garfo nas extremidades).</span>
-								</li>
+								<?php if( have_rows('passos_modo_preparo_produto') ):
+									$count_passo = 0;
+									while ( have_rows('passos_modo_preparo_produto') ) : the_row(); 
 
-								<li class="bg-cinza">
-									<span class="nun-preparo"><span>3</span></span>
-									<img class="ico-preparo" src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-preparo-3.png">
-									<span class="txt-preparo">Leve para fritar em gordura quente até o ponto dourado, deixe esfriar e sirva.</span>
-								</li>
+										$count_passo = $count_passo+1; ?>
+
+										<li class="bg-cinza">
+											<span class="nun-preparo"><span style="background-color: <?php echo $cor_category; ?>"><?php echo $count_passo; ?></span></span>
+											<img class="ico-preparo" src="<?php the_sub_field('icone_passo_modo_preparo_produto'); ?>">
+											<span class="txt-preparo"><?php the_sub_field('texto_passo_modo_preparo_produto'); ?></span>
+										</li>
+
+									<?php endwhile;
+								endif; ?>
+
 							</ul>
 						</div>
 					</div>
@@ -63,13 +62,13 @@
 
 					<div class="col-6">
 						<div class="img-tabela">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/images/img-tabela.jpg">
+							<img src="<?php the_field('informacao_nutricional'); ?>">
 						</div>
 					</div>
 					<div class="col-6">
 						<div class="content ingredientes">
-							<p><strong class="tit-ingredientes">INGREDIENTES:</strong>Farinha de trigo enriquecida com ferro e ácido fólico, gordura animal e vegetal, sal refinado e iodado, lecitina de soja, antioxidantes (E330 e E270), conservante E202.</p>
-							<p><strong>CONTÉM GLÚTEN NATURAL DO TRIGO. ALÉRGICOS: CONTÉM FARINHA DE TRIGO, E LECITINA DE SOJA. PODE CONTER TRAÇOS DE OVO.</strong></p>
+							<p style="color: <?php echo $cor_category; ?>"><strong class="tit-ingredientes" style="color: <?php echo $cor_category; ?>">INGREDIENTES:</strong><?php the_field('ingredientes'); ?></p>
+							<p><strong style="color: <?php echo $cor_category; ?>"><?php the_field('informacoes'); ?></strong></p>
 						</div>
 					</div>
 
@@ -77,24 +76,62 @@
 			</div>
 		</section>
 
-		<section class="box-content no-padding list-receita">
-			<h2 class="center bg-cor2 tit-slide-receita">RECEITAS</h2>
-			<div class="carousel-itens owl-carousel owl-theme owl-loaded owl-nav-off">
-				<div class="owl-stage-outer">
-					<div class="owl-stage">
 
-						<div class="owl-item">
-							<a href="javascript:" class="bloco-img" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-receitainterna.jpg');">
-								<div class="mask-item vertical-center">
-									<span class="content-vertical"><span class="tit-receita">Pastel Recheado de Presunto e Tomate</span></span>
-								</div>
-							</a>
-						</div>
+	<section class="box-content no-padding padding-bottom-100 list-receita">
+		<h2 class="center bg-cor2 tit-slide-receita">RECEITAS</h2>
+		<div class="carousel-itens owl-carousel owl-theme owl-loaded owl-nav-off">
+			<div class="owl-stage-outer">
+				<div class="owl-stage">
 
-					</div>
+					<?php
+						$receitas_list = array(
+								'posts_per_page' => 10,
+								'post_type' => 'receitas'
+							);
+						query_posts( $receitas_list );
+
+						if(have_posts()){ 
+							while ( have_posts() ) : the_post();
+								$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'wide' );
+
+								$categorias_produto = get_field('categoria_receita_produto');
+
+								foreach ($categorias_produto as $key => $cat_produto) {
+									if($cat_produto->term_id == $categorias->term_id){ ?>
+
+										<div class="owl-item">
+											<a href="<?php the_permalink(); ?>" class="bloco-img" style="background-image: url('<?php if($imagem[0]){ echo $imagem[0]; } ?>');" title="<?php the_title(); ?>">
+												<div class="mask-item vertical-center">
+													<span class="content-vertical">
+														<span class="tit-receita"><?php the_title(); ?></span>
+													</span>
+												</div>
+											</a>
+										</div>
+
+									<?php }
+									}							
+							endwhile;
+							wp_reset_query();
+						}
+					?>
+
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
+
+
+<?php
+	$prods_categoria = get_posts(
+		array(
+			'post_type' => 'post',
+			'category__in' => $categorias->term_id,
+			'posts_per_page' => -1
+		)
+	);
+
+	if($prods_categoria){ ?>
 
 		<section class="box-content no-padding-top list-linha-prod padding-footer">
 			<div class="container">
@@ -103,18 +140,31 @@
 					<div class="owl-stage-outer">
 						<div class="owl-stage">
 
-							<div class="owl-item">
-								<a href="<?php echo get_term_link(3); ?>" class="hover-prod">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/massasparapastel-banana.png">
-									<h2 class="full center bg-mini det-mini bg-cor7"><span>Massas pastel daboa aniversario 200g</span></h2>
-								</a>
-							</div>
+							<?php foreach ( $prods_categoria as $prod_categoria ) { 
+								$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($prod_categoria->ID), 'list-receita-produto' );
+								//var_dump($prod_categoria);
+								?>
+
+								<div class="owl-item">
+									<a href="<?php the_permalink($prod_categoria->ID); ?>" class="hover-prod">
+
+										<?php if($imagem[0]){ ?>
+											<img src="<?php echo $imagem[0]; ?>">
+										<?php } ?>
+										<h2 class="full center bg-mini det-mini bg-cor7"><span><?php echo $prod_categoria->post_title; ?></span></h2>
+									</a>
+								</div>
+
+							<?php } ?>
 
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>	
+		</section>
+
+	<?php }
+?>
 
 
 
@@ -240,7 +290,7 @@
 	})
 
 	$('.carousel-itens-prod').owlCarousel({
-		loop:true,
+		loop:false,
 		margin:15,
 		responsiveClass:true,
 		nav:true,

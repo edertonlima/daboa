@@ -1,110 +1,64 @@
 <?php get_header(); ?>
-<?php $category = get_queried_object(); //var_dump($category); 
-
-	switch ($category->name) {
-		case 'Pão de Alho':
-			$cor = 'cor4';
-			$produto_img = 'paodealho-tradicional.jpg';
-			break;
-
-		case 'Massa para Pastel':
-			$cor = 'cor7';
-			$produto_img = 'massasparapastel-banana.jpg';
-			break;
-
-		case 'Massas para Lasanha':
-			$cor = 'cor2';
-			$produto_img = 'massaparalasanha.jpg';
-			break;
-		
-		default:
-			# code...
-			break;
-	}
-
+<?php 
+	$current_category = get_queried_object();
+	$cor_category = get_field('cor_categoria', $current_category->taxonomy.'_'.$current_category->term_id);
 ?>
 
-	<section class="box-content no-padding-top">			
-		<div class="bloco-img grande title-bottom" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-massaparapastel.jpg');">
-			<h2 class="center bg-<?php echo $cor; ?>"><span><?php echo $category->name; ?></span></h2>
-		</div>
+	<section class="box-content box-slide no-padding-bottom"> 
+		
+		<?php include 'slide.php'; ?>
 
+		<h2 class="center title-solo-bottom" style="background-color: <?php echo $cor_category; ?>">
+			<span><?php echo $current_category->name; ?></span>
+		</h2>
+
+	</section>
+
+	<section class="box-content no-padding">
 		<div class="container">	
 			<div class="breadcrumbs">
 				<ul>
 					<li><a href="<?php echo get_home_url(); ?>" title="Home">Home</a></li>
 					<li><a href="<?php echo get_permalink(get_page_by_path('produtos')); ?>" title="Produtos">Produtos</a></li>
-					<li><?php echo $category->name; ?></li>
+					<li><?php echo $current_category->name; ?></li>
 				</ul>
 			</div>
 		</div>
 	</section>
 
-	<section class="box-content list-prod padding-bottom-60">
+	<section class="box-content no-padding list-prod">
 		<div class="container">
 			<div class="row">
 				<?php
 					while ( have_posts() ) : the_post(); ?>
 
-			<div class="col-4">
-				
-				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
-					<div class="owl-stage-outer">
-						<div class="owl-stage">
+						<div class="col-4">
+							
+							<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
+								<div class="owl-stage-outer">
+									<div class="owl-stage">
 
-							<div class="owl-item">
-								<a href="<?php the_permalink(); ?>" class="">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/<?php echo $produto_img; ?>">
-									<h4 class="<?php echo $cor; ?>"><?php the_title(); ?></h4>
-								</a>
+										<div class="owl-item">
+											<a href="<?php the_permalink(); ?>" class="">
+
+												<?php $imagem = wp_get_attachment_image_src( get_post_thumbnail_id($prod_categoria->ID), '' );
+													if($imagem[0]){ ?>
+
+														<img src="<?php echo $imagem[0]; ?>" alt="<?php the_title(); ?>">
+
+													<?php } ?>
+
+												<h4 style="color: <?php echo $cor_category; ?>"><?php the_title(); ?></h4>
+											</a>
+										</div>
+
+									</div>
+								</div>
 							</div>
 
 						</div>
-					</div>
-				</div>
 
-			</div>
-
-			<div class="col-4">
-				
-				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
-					<div class="owl-stage-outer">
-						<div class="owl-stage">
-
-							<div class="owl-item">
-								<a href="<?php the_permalink(); ?>" class="">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/<?php echo $produto_img; ?>">
-									<h4 class="<?php echo $cor; ?>"><?php the_title(); ?></h4>
-								</a>
-							</div>
-
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-			<div class="col-4">
-				
-				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
-					<div class="owl-stage-outer">
-						<div class="owl-stage">
-
-							<div class="owl-item">
-								<a href="<?php the_permalink(); ?>" class="">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/<?php echo $produto_img; ?>">
-									<h4 class="<?php echo $cor; ?>"><?php the_title(); ?></h4>
-								</a>
-							</div>
-
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-						<?php //get_template_part( 'content-receita', get_post_format() );
-					endwhile;
+					<?php endwhile;
 				?>
 
 				<?php paginacao(); ?>
@@ -112,75 +66,116 @@
 		</div>
 	</section>
 
-<?php get_footer(); ?>
+			<?php			/*$receitas = get_posts(
+							array(
+								'post_type' => 'receitas',
+								'category__in' => $current_category->term_id,
+								'posts_per_page' => 10
+							)
+						);
 
+						var_dump($receitas);
 
+						if($receitas){ 
+							foreach ($receitas as $key => $receita) {
+								var_dump($receita);
+							}
+						}*/
+					?>
 
-
-
-
-
-<?php /*
-<?php get_header(); ?>
-
-<?php $terms = get_queried_object(); ?>
-
-<!-- slide -->
-<section class="box-content box-slide">
-	<div class="slide">
-		<div class="controle-slide">
-			<a class="left" href="#slide" role="button" data-slide="prev"></a>
-			<a class="right" href="#slide" role="button" data-slide="next"></a>
-		</div>
-		<div class="carousel slide" data-ride="carousel" data-interval="1000000" id="slide">
-
-			<div class="carousel-inner" role="listbox"> 
-
-				<?php if( have_rows('slide_categoria',$terms->taxonomy.'_'.$terms->term_id) ):
-					$slide = 0;
-					while ( have_rows('slide_categoria',$terms->taxonomy.'_'.$terms->term_id) ) : the_row();
-
-							$slide = $slide+1; ?>
-
-							<div class="item <?php if($slide == 1){ echo 'active'; } ?>" style="background-image: url('<?php the_sub_field('imagem'); ?>');"></div>
+	<section class="box-content no-padding padding-bottom-100 list-receita">
+		<h2 class="center bg-cor2 tit-slide-receita">RECEITAS</h2>
+		<div class="carousel-itens owl-carousel owl-theme owl-loaded owl-nav-off">
+			<div class="owl-stage-outer">
+				<div class="owl-stage">
 
 					<?php
-					endwhile;
-				endif; ?>
+						$receitas_list = array(
+								'posts_per_page' => 10,
+								'post_type' => 'receitas'
+							);
+						query_posts( $receitas_list );
 
+						if(have_posts()){ 
+							while ( have_posts() ) : the_post();
+								$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'wide' );
+
+								$categorias_produto = get_field('categoria_receita_produto');
+
+								foreach ($categorias_produto as $key => $cat_produto) {
+									if($cat_produto->term_id == $current_category->term_id){ ?>
+
+										<div class="owl-item">
+											<a href="<?php the_permalink(); ?>" class="bloco-img" style="background-image: url('<?php if($imagem[0]){ echo $imagem[0]; } ?>');" title="<?php the_title(); ?>">
+												<div class="mask-item vertical-center">
+													<span class="content-vertical">
+														<span class="tit-receita"><?php the_title(); ?></span>
+													</span>
+												</div>
+											</a>
+										</div>
+
+									<?php }
+									}							
+							endwhile;
+							wp_reset_query();
+						}
+					?>
+
+				</div>
 			</div>
-
-			<ol class="carousel-indicators">
-				
-				<?php 
-					if($slide > 1){ 
-						for($i=0; $i<$slide; $i++){ ?>
-							<li data-target="#slide" data-slide-to="<?php echo $i; ?>" class="<?php if($i == 0){ echo 'active'; } ?>"></li>
-						<?php }
-					}
-				?>
-				
-			</ol>
-
 		</div>
-	</div>
-</section>
-
-<section class="box-content">
-	<h2 class="bege"><?php single_term_title(); ?></h2>
-	<div class="list-produto">
-
-		<?php
-		while ( have_posts() ) : the_post();
-
-			get_template_part( 'content-list-produto', 'post' );
-
-		endwhile;
-		?>
-
-	</div>
-</section>
-
+	</section>
 
 <?php get_footer(); ?>
-*/ ?>
+
+<!-- CAROUSEL -->
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/owl.carousel.min.js"></script>
+
+<script type="text/javascript">
+	$('.carousel-itens').owlCarousel({
+		loop:true,
+		margin:40,
+		responsiveClass:true,
+		nav:true,
+		navText: ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>'],
+		//rtl:true,
+		responsive:{
+			0:{
+				items:1,
+				nav:true
+			}
+		}
+	})
+
+	$('.carousel-list-category').owlCarousel({
+		loop:false,
+		margin:10,
+		responsiveClass:true,
+		nav:true,
+		navText: ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>'],
+		//rtl:true,
+		responsive:{
+			0:{
+				items:2,
+				nav:true
+			},
+			350:{
+				items:3,
+				nav:true
+			},
+			540:{
+				items:4,
+				nav:true
+			},
+			640:{
+				items:6,
+				nav:true
+			},
+			740:{
+				items:8,
+				nav:true
+			}
+		}
+	})
+</script>

@@ -82,6 +82,11 @@ h2 {
 			}
 		}
 	}
+
+	&.title-solo-bottom {
+		margin-top: -40px;
+		position: relative;
+	}
 }
 
 h3 {
@@ -259,6 +264,9 @@ p {
 .padding-bottom-60 {
 	padding-bottom: 60px;
 }
+.padding-bottom-100 {
+	padding-bottom: 100px;
+}
 
 a {
 	text-decoration: none;
@@ -332,6 +340,7 @@ a {
 .paginacao {
 	margin: 50px auto 0;
 	text-align: center;
+	@include clear;
 
 	li {
 		display: inline-block;

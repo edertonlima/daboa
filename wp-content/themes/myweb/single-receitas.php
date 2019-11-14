@@ -4,9 +4,10 @@
 
 		$cor = 'cor7';
 		$produto_img = 'massaparalasanha.jpg';
-		$categorias = wp_get_post_terms( $post->ID, 'category' )[0]; 
-		$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'detalhe-post-page' ); 
-
+		$categorias = wp_get_post_terms( $post->ID, 'categoria_receitas' )[0]; 
+		$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'detalhe-post-page' );
+		$current_ID = $post->ID;
+		//var_dump( $categorias);
 		?>
 			
 
@@ -20,6 +21,7 @@
 					<ul>
 						<li><a href="<?php echo get_home_url(); ?>" title="Home">Home</a></li>
 						<li><a href="<?php echo get_home_url(); ?>/receitas" title="Receitas">Receitas</a></li>
+						<li><a href="<?php echo get_term_link($categorias->term_id); ?>" title="<?php echo $categorias->name; ?>"><?php echo $categorias->name; ?></a></li>
 						<li><?php the_title(); ?></li>
 					</ul>
 				</div>
@@ -70,32 +72,46 @@
 			<a href="<?php echo get_home_url(); ?>" title=""><i class="fab fa-instagram"></i></a>
 		</div>
 
-		<?php
+		<?php //echo $categorias->term_id;
 			$receitas_list = array(
 					'posts_per_page' => 2,
+					//'category__in' => $categorias->term_id,
+				    'tax_query' => array(
+				        array (
+				            'taxonomy' => 'categoria_receitas',
+				            'field' => 'slug',
+				            'terms' => $categorias->slug,
+				        )
+				    ),
 					'post_type' => 'receitas'
 				);
 			query_posts( $receitas_list );
 
-			if(have_posts()){ ?>
+			if((have_posts()) and ($wp_query->post_count > 1)){ ?>
 
 				<section class="box-content no-padding-top padding-bottom-60 list-receita">
 					<div class="container">
 						<h3 class="outras-receitas center">Explore outras receitas:</h3>
 							
 						<div class="row">
-							<?php while ( have_posts() ) : the_post(); ?>
+							<?php while ( have_posts() ) : the_post(); 
+								if($post->ID != $current_ID){ ?>
 
-								<div class="col-6">
-									<?php get_template_part( 'content-receita', get_post_format() ); ?>
-								</div>
+									<div class="col-6">
+										<?php get_template_part( 'content-receita', get_post_format() ); ?>
+									</div>
 
-							<?php endwhile;
+								<?php }
+							endwhile;
 							wp_reset_query(); ?>
 						</div>	
 					</div>
 				</section>
 
+			<?php }else{
+				wp_reset_query(); ?>
+				
+				<section class="box-content no-padding-top padding-bottom-60 list-receita"></section>
 			<?php }
 		?>
 

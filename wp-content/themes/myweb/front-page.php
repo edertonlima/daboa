@@ -2,35 +2,7 @@
 
 <!-- slide --> 
 <section class="box-content box-slide"> 
-	<div class="slide">
-
-		<div id="slide-home" class="carousel slide" data-ride="carousel" data-interval="8000">
-			<ol class="carousel-indicators">
-				<li data-target="#slide-home" data-slide-to="0" class="active"></li>
-				<li data-target="#slide-home" data-slide-to="1"></li>
-				<li data-target="#slide-home" data-slide-to="2"></li>
-			</ol>
-
-			<div class="carousel-inner">
-				<div class="carousel-item active" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/slide-1.jpg');">
-				</div>
-				<div class="carousel-item" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/slide-1.jpg');">
-				</div>
-				<div class="carousel-item" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/slide-1.jpg');">
-				</div>
-			</div>
-
-			<a class="carousel-control-prev" href="#slide-home" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#slide-home" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
-		</div>
-
-	</div>
+	<?php include 'slide.php'; ?>
 </section>
 
 <?php
@@ -40,10 +12,11 @@
 		);
 	query_posts( $receitas_list );
 
-	if(have_posts()){ ?>
+	if(have_posts()){ 
+		$imagem_receita = get_field('imagem_bloco_principal_receitas','option'); ?>
 
 		<section class="box-content list-receita">
-			<div class="bloco-img title-top" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-receita.jpg');">
+			<div class="bloco-img title-top" style="background-image: url('<?php echo $imagem_receita['sizes']['wide']; ?>');">
 				<a href="<?php echo get_home_url(); ?>/receitas"><h2 class="center bg-cor2">RECEITAS</h2></a>
 			</div>
 
@@ -71,7 +44,9 @@
 ?>
 
 <section class="box-content list-linha-prod">
-	<div class="bloco-img title-top" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-linhadeprodutos.jpg');">
+	<?php $imagem_produtos = get_field('imagem_bloco_principal_produtos','option'); ?>
+
+	<div class="bloco-img title-top" style="background-image: url('<?php echo $imagem_produtos['sizes']['wide']; ?>');">
 		<a href="<?php echo get_home_url(); ?>/produtos">
 			<h2 class="title-mini center bg-cor3 mobile-750px-hide">LINHA DE PRODUTOS</h2>
 			<h2 class="title-mini center bg-cor3 mobile-750px-show">PRODUTOS</h2>
@@ -84,42 +59,63 @@
 		</a>
 
 		<div class="row">
-			<div class="col-6">
-				
-				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
-					<div class="owl-stage-outer">
-						<div class="owl-stage">
+			<?php 
+				$category = get_terms( array(
+				    'taxonomy' => 'category',
+				    'hide_empty' => false
+				) );
 
-							<div class="owl-item">
-								<a href="<?php echo get_term_link(3); ?>" class="hover-prod">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/massasparapastel-banana.jpg">
+				shuffle( $category );
+				$qtd_linha = 0;
+
+				if($category){ 
+					foreach ($category as $key => $categoria) { //print_r($categoria);
+						$qtd_linha = $qtd_linha+1; 
+						if ($qtd_linha <= 2) { ?>
+						 	
+							<div class="col-6">
+								
+								<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
+									<div class="owl-stage-outer">
+										<div class="owl-stage">
+											<?php
+												$prods_categoria = get_posts(
+													array(
+														'post_type' => 'post',
+														'category__in' => $categoria->term_id,
+														'posts_per_page' => -1
+													)
+												);
+
+												foreach ( $prods_categoria as $prod_categoria ) { 
+													$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($prod_categoria->ID), '' ); 
+													if($imagem[0]){ ?>
+														<div class="owl-item">
+															<a href="<?php echo get_term_link($categoria->term_id); ?>" class="hover-prod">
+																<div class="vertical-center">
+																	<div class="content-vertical">
+																		<img src="<?php echo $imagem[0]; ?>">
+																	</div>
+																</div>
+															</a>
+														</div>
+													<?php }
+												}
+											?>
+										</div>
+									</div>
+								</div>
+
+								<a href="<?php echo get_term_link($categoria->term_id); ?>">
+									<h2 class="full center" style="background-color: <?php the_field('cor_categoria', $categoria->taxonomy.'_'.$categoria->term_id); ?>"><span><?php echo $categoria->name; ?></span></h2>
 								</a>
+
 							</div>
 
-						</div>
-					</div>
-				</div>
-				<h2 class="full center bg-cor7"><span>Massas para Pastel</span></h2>
-
-			</div>
-			<div class="col-6">
-				
-				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
-					<div class="owl-stage-outer">
-						<div class="owl-stage">
-
-							<div class="owl-item">
-								<a href="<?php echo get_term_link(2); ?>" class="hover-prod" style="opacity: 0">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/massaparalasanha.jpg">
-								</a>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				<h2 class="full center bg-cor2"><span>Massa para Lasanha</span></h2>
-
-			</div>
+						<?php }
+					}
+				}
+			?>
 		</div>		
 	</div>
 </section>
@@ -127,7 +123,11 @@
 <section class="box-content">
 	<div class="container container-mobile">
 
-		<div class="bloco-img grande title-bottom block-img-hide" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-contato.jpg');">
+		<?php
+			$imagem = wp_get_attachment_image_src( get_post_thumbnail_id(get_page_by_path('contato')), 'detalhe-post-page' ); 
+		?>
+
+		<div class="bloco-img grande title-bottom block-img-hide" style="background-image: url('<?php if($imagem[0]){ echo $imagem[0]; } ?>');">
 			<h2 class="center bg-cor5">FALE CONOSCO</h2>
 		</div>
 

@@ -11,7 +11,7 @@
 					</h1>
 
 					<h4>Sobre Nós</h4>
-					<p class="sobre">“Nossa missão é alcançar a liderança de mercado no segmento de massas frescas em Santa Catarina sendo referência pela qualidade de nossos produtos e pelo aprimoramento contínuo de nossos serviços".</p>
+					<p class="sobre"><?php echo get_the_excerpt(get_page_by_path('sobre-nos')); ?></p>
 
 				</div>
 
@@ -19,16 +19,26 @@
 					<nav class="nav nav-footer">
 						<ul>
 							<li><a href="<?php echo get_home_url(); ?>" title="Home">Home</a></li>
-							<li><a href="<?php echo get_permalink(get_page_by_path('sobre-nos')); ?>" title="">Sobre Nós</a></li>
+							<li><a href="<?php echo get_permalink(get_page_by_path('sobre-nos')); ?>" title="<?php the_field('titulo_menu',get_page_by_path('sobre-nos')); ?>"><?php the_field('titulo_menu',get_page_by_path('sobre-nos')); ?></a></li>
 							<li>
-								<a href="#" title="">Produtos</a>
+								<a href="<?php echo get_permalink(get_page_by_path('produtos')); ?>" title="Produtos">Produtos</a>
 								<ul>
-									<li><a href="#" title="">Pão de Alho</a></li>
-									<li><a href="#" title="">Massas para Lasanha</a></li>
+									<?php $category = get_terms( array(
+									    'taxonomy' => 'category',
+									    'hide_empty' => false
+									) );
+
+									if($category){ 
+										foreach ($category as $key => $categoria) { //var_dump($categoria); ?>
+
+											<li><a href="<?php echo get_term_link($categoria->term_id); ?>" title="<?php echo $categoria->name; ?>"><?php echo $categoria->name; ?></a></li>
+
+										<?php }
+									} ?>
 								</ul>
 							</li>
 							<li><a href="#" title="">Receitas</a></li>
-							<li><a href="<?php echo get_permalink(get_page_by_path('contato')); ?>" title="">Contato</a></li>
+							<li><a href="<?php echo get_permalink(get_page_by_path('contato')); ?>" title="<?php the_field('titulo_menu',get_page_by_path('contato')); ?>"><?php the_field('titulo_menu',get_page_by_path('contato')); ?></a></li>
 						</ul>
 					</nav>
 				</div>
@@ -51,8 +61,8 @@
 
 					<div class="redes-sociais">
 						<span>Siga-nos nas redes sociais<span> e acompanhe as novidades</span>!</span>
-						<a href="https://www.facebook.com/ocpecuadorsa " title=""><i class="fab fa-facebook-f"></i></a>
-						<a href="<?php echo get_home_url(); ?>" title=""><i class="fab fa-instagram"></i></a>
+						<a href="https://www.facebook.com/ " title=""><i class="fab fa-facebook-f"></i></a>
+						<a href="https://www.instagram.com" title=""><i class="fab fa-instagram"></i></a>
 					</div>
 				</div>
 

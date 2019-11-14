@@ -13,6 +13,7 @@
 //add_theme_support( 'post-thumbnails' );
 add_filter('show_admin_bar', '__return_false');
 add_post_type_support( 'post', 'excerpt' );
+add_post_type_support( 'page', 'excerpt' );
 add_theme_support( 'post-thumbnails' );
 
 
@@ -23,6 +24,7 @@ add_theme_support( 'post-thumbnails' );
 
 add_action( 'init', 'my_custom_init' );
 function my_custom_init() {
+	remove_post_type_support( 'post', 'editor' );
 	//remove_post_type_support('page', 'editor');
 	//remove_post_type_support( 'page', 'thumbnail' );
 }
@@ -34,10 +36,10 @@ function remove_post_custom_fields() {
 add_action( 'admin_menu' , 'remove_post_custom_fields' );
 
 // Remove tags
-/*function myprefix_unregister_tags() {
+function myprefix_unregister_tags() {
     unregister_taxonomy_for_object_type('post_tag', 'post');
 }
-add_action('init', 'myprefix_unregister_tags');*/
+add_action('init', 'myprefix_unregister_tags');
 
 
 /* MENUS */
@@ -110,7 +112,7 @@ add_action( 'init', 'change_post_object' );
 
 
 /* PAGINAS CONFIGURAÇÕES */ 
-//if( function_exists('acf_add_options_page') ) {
+if( function_exists('acf_add_options_page') ) {
 
 	/*acf_add_options_page(array(
 		'page_title' 	=> 'Slide Home',
@@ -130,7 +132,7 @@ add_action( 'init', 'change_post_object' );
 		'icon_url' 		=> 'dashicons-admin-comments'
 	));*/
 	
-	/*acf_add_options_page(array(
+	acf_add_options_page(array(
 		'page_title' 	=> 'Configurações',
 		'menu_title'	=> 'Configurações',
 		'menu_slug' 	=> 'configuracoes-geral',
@@ -139,17 +141,35 @@ add_action( 'init', 'change_post_object' );
 	));
 
 	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Configurações Gerais',
-		'menu_title'	=> 'Geral',
+		'page_title' 	=> 'SEO',
+		'menu_title'	=> 'SEO',
 		'parent_slug'	=> 'configuracoes-geral',
 	));
 
 	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Projetos',
-		'menu_title'	=> 'Projetos',
+		'page_title' 	=> 'Redes Sociais',
+		'menu_title'	=> 'Redes Sociais',
 		'parent_slug'	=> 'configuracoes-geral',
 	));
-}*/
+
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Contato',
+		'menu_title'	=> 'Contato',
+		'parent_slug'	=> 'configuracoes-geral',
+	));
+
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Receitas',
+		'menu_title'	=> 'Receitas',
+		'parent_slug'	=> 'configuracoes-geral',
+	));
+
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Produtos',
+		'menu_title'	=> 'Produtos',
+		'parent_slug'	=> 'configuracoes-geral',
+	));
+}
 
 /* PAGINAÇÃO */
 function paginacao() {
@@ -163,8 +183,8 @@ function paginacao() {
             'prev_next' => false,
             'type'  => 'array',
             'prev_next'   => TRUE,
-			'prev_text'    => __('<i class="fa fa-2x fa-angle-left"></i>'),
-			'next_text'    => __('<i class="fa fa-2x fa-angle-right"></i>'),
+			'prev_text'    => __('<i class="fas fa-chevron-left"></i>'),
+			'next_text'    => __('<i class="fas fa-chevron-right"></i>'),
         ) );
         if( is_array( $pages ) ) {
             $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
@@ -212,6 +232,39 @@ function post_type_receitas() {
 	  );
 
     register_post_type( 'receitas', $args );
+}
+
+add_action( 'init', 'create_taxonomy_categoria_receitas' );
+function create_taxonomy_categoria_receitas() {
+
+	$labels = array(
+	    'name' => _x( 'Categoria', 'taxonomy general name' ),
+	    'singular_name' => _x( 'Categoria', 'taxonomy singular name' ),
+	    'search_items' =>  __( 'Procurar categoria' ),
+	    'all_items' => __( 'Todas as categorias' ),
+	    'parent_item' => __( 'Categoria pai' ),
+	    'parent_item_colon' => __( 'Categoria pai:' ),
+	    'edit_item' => __( 'Editar categoria' ),
+	    'update_item' => __( 'Atualizar categoria' ),
+	    'add_new_item' => __( 'Adicionar nova categoria' ),
+	    'new_item_name' => __( 'Nova categoria' ),
+	    'menu_name' => __( 'Categoria' ),
+	);
+
+    register_taxonomy( 'categoria_receitas', array( 'receitas' ), array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'show_in_tag_cloud' => true,
+        'query_var' => true,
+        'has_archive' => 'receitas',
+		'rewrite' => array(
+		    'slug' => 'receitas',
+		    'with_front' => false,
+			)
+        )
+    );
 }
 
 
@@ -327,7 +380,7 @@ function create_taxonomy_categoria_proyectos() {
 				<script type="text/javascript">
 					jQuery.noConflict();
 
-					jQuery("document").ready(function(){
+					jQuery("document").ready(function(){						
 						jQuery("#menu-media").remove();
 						jQuery("#menu-comments").remove();
 						/*jQuery("#menu-appearance").remove();

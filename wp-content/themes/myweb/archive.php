@@ -1,86 +1,43 @@
 <?php get_header(); ?>
 
 <!-- slide --> 
-<section class="box-content box-slide no-padding-bottom"> 
-	<div class="slide">
+<section class="box-content box-slide">
+	
+	<?php include 'slide.php'; ?>
 
-		<div id="slide-home" class="carousel slide" data-ride="carousel" data-interval="8000">
-			<ol class="carousel-indicators">
-				<li data-target="#slide-home" data-slide-to="0" class="active"></li>
-				<li data-target="#slide-home" data-slide-to="1"></li>
-				<li data-target="#slide-home" data-slide-to="2"></li>
-			</ol>
+	<?php 
+		$category = get_terms( array(
+		    'taxonomy' => 'categoria_receitas',
+		    'hide_empty' => false,
+		) );
 
-			<div class="carousel-inner">
-				<div class="carousel-item active" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-produtos.jpg');">
-				</div>
-				<div class="carousel-item" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-produtos.jpg');">
-				</div>
-				<div class="carousel-item" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-produtos.jpg');">
+		if($category){ ?>
+			<div class="list-category bg-cor2">
+				<div class="container">
+
+						<div class="carousel-list-category owl-carousel owl-theme owl-loaded">
+							<div class="owl-stage-outer">
+								<div class="owl-stage">
+
+									<?php foreach ($category as $key => $categoria) { ///var_dump($categoria); ?>
+										<div class="owl-item">
+											<div class="item-category <?php //if($category->term_id != 3): echo 'off'; endif; ?>">
+												<a href="<?php echo get_term_link($categoria->term_id); ?>" rel="<?php echo $categoria->slug; ?>">
+													<img src="<?php the_field('icone_categoria_receitas', $categoria->taxonomy.'_'.$categoria->term_id); ?>" align="">
+													<span class="txt cor3"><span><?php echo $categoria->name; ?></span></span>
+												</a>
+											</div>
+										</div>
+									<?php } ?>
+
+								</div>
+							</div>
+						</div>
+
 				</div>
 			</div>
-
-			<a class="carousel-control-prev" href="#slide-home" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#slide-home" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
-		</div>
-
-	</div>
-
-					<div class="list-category bg-cor3" style="display: none;">
-						<ul class="container">
-							<li class="<?php if($category->term_id != 1): echo 'off'; endif; ?>">
-								<a href="<?php echo get_term_link(1); ?>">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-paodealho.png" align="">
-									<span class="txt cor3"><span>Pão de Alho</span></span>
-								</a>
-							</li>
-							<li class="<?php if($category->term_id != 2): echo 'off'; endif; ?>">
-								<a href="<?php echo get_term_link(2); ?>">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-massasparalasanha.png" align="">
-									<span class="txt cor3"><span>Massas para Lasanha</span></span>
-								</a>
-							</li>
-
-							<li class="<?php if($category->term_id != 3): echo 'off'; endif; ?>">
-								<a href="<?php echo get_term_link(3); ?>">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-massasparapastel.png" align="">
-									<span class="txt cor3"><span>Massas para Pastel</span></span>
-								</a>
-							</li>
-						</ul>
-					</div>
-
-	<div class="list-category bg-cor2">
-		<div class="container">
-
-				<div class="carousel-list-category owl-carousel owl-theme owl-loaded">
-					<div class="owl-stage-outer">
-						<div class="owl-stage">
-
-							<?php for ($i=0; $i < 8; $i++) {  ?>
-							<div class="owl-item">
-									<div class="item-category <?php if($category->term_id != 3): echo 'off'; endif; ?>">
-										<a href="<?php echo get_term_link(3); ?>">
-											<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-massasparapastel.png" align="">
-											<span class="txt cor3"><span><?php echo $i; ?> - Massas para Pastel</span></span>
-										</a>
-									</div>
-							</div>
-							<?php } ?>
-
-						</div>
-					</div>
-				</div>
-
-		</div>
-	</div>
-
+		<?php }
+	?>
 
 	<div class="container">	
 		<div class="breadcrumbs">

@@ -2,85 +2,42 @@
 
 <!-- slide --> 
 <section class="box-content box-slide no-padding-bottom"> 
-	<div class="slide">
+	
+	<?php include 'slide.php'; ?>
 
-		<div id="slide-home" class="carousel slide" data-ride="carousel" data-interval="8000">
-			<ol class="carousel-indicators">
-				<li data-target="#slide-home" data-slide-to="0" class="active"></li>
-				<li data-target="#slide-home" data-slide-to="1"></li>
-				<li data-target="#slide-home" data-slide-to="2"></li>
-			</ol>
+	<?php 
+		$category = get_terms( array(
+		    'taxonomy' => 'category',
+		    'hide_empty' => false,
+		) );
 
-			<div class="carousel-inner">
-				<div class="carousel-item active" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-produtos.jpg');">
-				</div>
-				<div class="carousel-item" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-produtos.jpg');">
-				</div>
-				<div class="carousel-item" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/img-tit-produtos.jpg');">
+		if($category){ ?>
+			<div class="list-category bg-cor3">
+				<div class="container">
+
+						<div class="carousel-list-category owl-carousel owl-theme owl-loaded">
+							<div class="owl-stage-outer">
+								<div class="owl-stage">
+
+									<?php foreach ($category as $key => $categoria) { ?>
+										<div class="owl-item">
+											<div class="item-category <?php //if($category->term_id != 3): echo 'off'; endif; ?>">
+												<a href="<?php echo get_term_link($categoria->term_id); ?>">
+													<img src="<?php the_field('icone_categoria', $categoria->taxonomy.'_'.$categoria->term_id); ?>" align="">
+													<span class="txt cor3"><span><?php echo $categoria->name; ?></span></span>
+												</a>
+											</div>
+										</div>
+									<?php } ?>
+
+								</div>
+							</div>
+						</div>
+
 				</div>
 			</div>
-
-			<a class="carousel-control-prev" href="#slide-home" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#slide-home" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
-		</div>
-
-	</div>
-
-					<div class="list-category bg-cor3" style="display: none;">
-						<ul class="container">
-							<li class="<?php if($category->term_id != 1): echo 'off'; endif; ?>">
-								<a href="<?php echo get_term_link(1); ?>">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-paodealho.png" align="">
-									<span class="txt cor3"><span>Pão de Alho</span></span>
-								</a>
-							</li>
-							<li class="<?php if($category->term_id != 2): echo 'off'; endif; ?>">
-								<a href="<?php echo get_term_link(2); ?>">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-massasparalasanha.png" align="">
-									<span class="txt cor3"><span>Massas para Lasanha</span></span>
-								</a>
-							</li>
-
-							<li class="<?php if($category->term_id != 3): echo 'off'; endif; ?>">
-								<a href="<?php echo get_term_link(3); ?>">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-massasparapastel.png" align="">
-									<span class="txt cor3"><span>Massas para Pastel</span></span>
-								</a>
-							</li>
-						</ul>
-					</div>
-
-	<div class="list-category bg-cor3">
-		<div class="container">
-
-				<div class="carousel-list-category owl-carousel owl-theme owl-loaded">
-					<div class="owl-stage-outer">
-						<div class="owl-stage">
-
-							<?php for ($i=0; $i < 8; $i++) {  ?>
-							<div class="owl-item">
-									<div class="item-category <?php if($category->term_id != 3): echo 'off'; endif; ?>">
-										<a href="<?php echo get_term_link(3); ?>">
-											<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-massasparapastel.png" align="">
-											<span class="txt cor3"><span><?php echo $i; ?> - Massas para Pastel</span></span>
-										</a>
-									</div>
-							</div>
-							<?php } ?>
-
-						</div>
-					</div>
-				</div>
-
-		</div>
-	</div>
-
+		<?php }
+	?>
 
 	<div class="container">	
 		<div class="breadcrumbs">
@@ -92,87 +49,63 @@
 	</div>
 </section>
 
-<section class="box-content list-linha-prod no-padding-top">
+<section class="box-content home list-linha-prod no-padding-top padding-bottom-60">
 	<div class="container">
+
 		<div class="row">
-			<div class="col-6 padding-bottom-60">
-				
-				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
-					<div class="owl-stage-outer">
-						<div class="owl-stage">
+			<?php 
+				$category = get_terms( array(
+				    'taxonomy' => 'category',
+				    'hide_empty' => false
+				) );
 
-							<div class="owl-item">
-								<a href="<?php echo get_term_link(1); ?>" class="hover-prod" style="opacity: 0">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/paodealho-tradicional.jpg">
-								</a>
+				if($category){ 
+					foreach ($category as $key => $categoria) { ?>
+						 	
+						<div class="col-6 padding-bottom-100">
+							
+							<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
+								<div class="owl-stage-outer">
+									<div class="owl-stage">
+										<?php
+											$prods_categoria = get_posts(
+												array(
+													'post_type' => 'post',
+													'category__in' => $categoria->term_id,
+													'posts_per_page' => -1
+												)
+											);
+
+											foreach ( $prods_categoria as $prod_categoria ) { 
+												$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($prod_categoria->ID), 'list-receita-produto' ); 
+												if($imagem[0]){ ?>
+													<div class="owl-item">
+														<a href="<?php echo get_term_link($categoria->term_id); ?>" class="hover-prod">
+															<div class="vertical-center">
+																<div class="content-vertical">
+																	<img src="<?php echo $imagem[0]; ?>">
+																</div>
+															</div>
+														</a>
+													</div>
+												<?php }
+											}
+										?>
+									</div>
+								</div>
 							</div>
-							<div class="owl-item">
-								<a href="<?php echo get_term_link(1); ?>" class="hover-prod" style="opacity: 0">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/paodealho-tradicional.jpg">
-								</a>
-							</div>
-							<div class="owl-item">
-								<a href="<?php echo get_term_link(1); ?>" class="hover-prod" style="opacity: 0">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/paodealho-tradicional.jpg">
-								</a>
-							</div>
+
+							<a href="<?php echo get_term_link($categoria->term_id); ?>">
+								<h2 class="full center" style="background-color: <?php the_field('cor_categoria', $categoria->taxonomy.'_'.$categoria->term_id); ?>"><span><?php echo $categoria->name; ?></span></h2>
+							</a>
 
 						</div>
-					</div>
-				</div>
-				<h2 class="full center bg-cor4"><span>Pão de Alho</span></h2>
 
-			</div>
-			<div class="col-6 padding-bottom-60">
-				
-				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
-					<div class="owl-stage-outer">
-						<div class="owl-stage">
+					<?php }
+				}
+			?>
+		</div>
 
-							<div class="owl-item">
-								<a href="<?php echo get_term_link(2); ?>" class="hover-prod" style="opacity: 0">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/massaparalasanha.jpg">
-								</a>
-							</div>
-
-							<div class="owl-item">
-								<a href="<?php echo get_term_link(2); ?>" class="hover-prod" style="opacity: 0">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/massaparalasanha.jpg">
-								</a>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				<h2 class="full center bg-cor2"><span>Massas para Lasanha</span></h2>
-
-			</div>
-			<div class="col-6 padding-bottom-60">
-				
-				<div class="carousel-itens-produtos owl-carousel owl-theme owl-loaded bg-cinza">
-					<div class="owl-stage-outer">
-						<div class="owl-stage">
-
-							<div class="owl-item">
-								<a href="<?php echo get_term_link(3); ?>" class="hover-prod">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/massasparapastel-banana.jpg">
-								</a>
-							</div>
-
-							<div class="owl-item">
-								<a href="<?php echo get_term_link(3); ?>" class="hover-prod">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/massasparapastel-banana.jpg">
-								</a>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				<h2 class="full center bg-cor7"><span>Massas para Pastel</span></h2>
-
-			</div>
-
-		</div>		
 	</div>
 </section>
 
