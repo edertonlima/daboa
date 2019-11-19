@@ -2,13 +2,12 @@
 
 	<?php while ( have_posts() ) : the_post(); 
 
-		$cor = 'cor7';
+		//$cor = 'cor7';
 		$produto_img = 'massaparalasanha.jpg';
 		$categorias = wp_get_post_terms( $post->ID, 'categoria_receitas' )[0]; 
 		$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'detalhe-post-page' );
 		$current_ID = $post->ID;
-		//var_dump( $categorias);
-		?>
+	?>
 			
 
 		<section class="box-content no-padding detalhe-prod">			
@@ -68,52 +67,54 @@
 
 		<div class="rede-social-receita">
 			<h3 class="center cor2 uppercase">COMPARTILHE OS RESULTADOS!</h3>
-			<a href="https://www.facebook.com/ocpecuadorsa" title=""><i class="fab fa-facebook-f"></i></a>
-			<a href="<?php echo get_home_url(); ?>" title=""><i class="fab fa-instagram"></i></a>
+			<a href="<?php the_field('facebook','option'); ?>" title=""><i class="fab fa-facebook-f"></i></a>
+			<a href="<?php the_field('instagram','option'); ?>" title=""><i class="fab fa-instagram"></i></a>
 		</div>
 
-		<?php //echo $categorias->term_id;
-			$receitas_list = array(
-					'posts_per_page' => 2,
-					//'category__in' => $categorias->term_id,
-				    'tax_query' => array(
-				        array (
-				            'taxonomy' => 'categoria_receitas',
-				            'field' => 'slug',
-				            'terms' => $categorias->slug,
-				        )
-				    ),
-					'post_type' => 'receitas'
-				);
-			query_posts( $receitas_list );
+		<section class="box-content no-padding-top padding-bottom-100 list-receita">
 
-			if((have_posts()) and ($wp_query->post_count > 1)){ ?>
+			<?php //echo $categorias->term_id;
+				$receitas_list = array(
+						'posts_per_page' => 2,
+						//'category__in' => $categorias->term_id,
+					    'tax_query' => array(
+					        array (
+					            'taxonomy' => 'categoria_receitas',
+					            'field' => 'slug',
+					            'terms' => $categorias->slug,
+					        )
+					    ),
+						'post_type' => 'receitas'
+					);
+				query_posts( $receitas_list );
 
-				<section class="box-content no-padding-top padding-bottom-60 list-receita">
-					<div class="container">
-						<h3 class="outras-receitas center">Explore outras receitas:</h3>
-							
-						<div class="row">
-							<?php while ( have_posts() ) : the_post(); 
-								if($post->ID != $current_ID){ ?>
+				if((have_posts()) and ($wp_query->post_count > 1)){ ?>
 
-									<div class="col-6">
-										<?php get_template_part( 'content-receita', get_post_format() ); ?>
-									</div>
+						<div class="container">
+							<h3 class="outras-receitas center">Explore outras receitas:</h3>
+								
+							<div class="row">
+								<?php while ( have_posts() ) : the_post(); 
+									if($post->ID != $current_ID){ ?>
 
-								<?php }
-							endwhile;
-							wp_reset_query(); ?>
-						</div>	
-					</div>
-				</section>
+										<div class="<?php if($wp_query->post_count == 2){ echo 'col-m-3';} ?> col-6">
+											<?php get_template_part( 'content-receita', get_post_format() ); ?>
+										</div>
 
-			<?php }else{
-				wp_reset_query(); ?>
-				
-				<section class="box-content no-padding-top padding-bottom-60 list-receita"></section>
-			<?php }
-		?>
+									<?php }
+								endwhile;
+								wp_reset_query(); ?>
+							</div>	
+						</div>
+					
+
+				<?php }else{
+					wp_reset_query(); ?>
+					
+					<section class="box-content no-padding-top padding-bottom-60 list-receita"></section>
+				<?php }
+			?>
+		</section>
 
 	<?php endwhile; ?>
 

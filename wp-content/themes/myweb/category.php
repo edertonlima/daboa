@@ -4,6 +4,12 @@
 	$cor_category = get_field('cor_categoria', $current_category->taxonomy.'_'.$current_category->term_id);
 ?>
 
+		<style type="text/css">
+			.list-receita .owl-carousel .owl-dots .owl-dot.active {
+			    background: <?php echo $cor_category; ?>
+			}
+		</style>
+
 	<section class="box-content box-slide no-padding-bottom"> 
 		
 		<?php include 'slide.php'; ?>
@@ -66,66 +72,7 @@
 		</div>
 	</section>
 
-			<?php			/*$receitas = get_posts(
-							array(
-								'post_type' => 'receitas',
-								'category__in' => $current_category->term_id,
-								'posts_per_page' => 10
-							)
-						);
-
-						var_dump($receitas);
-
-						if($receitas){ 
-							foreach ($receitas as $key => $receita) {
-								var_dump($receita);
-							}
-						}*/
-					?>
-
-	<section class="box-content no-padding padding-bottom-100 list-receita">
-		<h2 class="center bg-cor2 tit-slide-receita">RECEITAS</h2>
-		<div class="carousel-itens owl-carousel owl-theme owl-loaded owl-nav-off">
-			<div class="owl-stage-outer">
-				<div class="owl-stage">
-
-					<?php
-						$receitas_list = array(
-								'posts_per_page' => 10,
-								'post_type' => 'receitas'
-							);
-						query_posts( $receitas_list );
-
-						if(have_posts()){ 
-							while ( have_posts() ) : the_post();
-								$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'wide' );
-
-								$categorias_produto = get_field('categoria_receita_produto');
-
-								foreach ($categorias_produto as $key => $cat_produto) {
-									if($cat_produto->term_id == $current_category->term_id){ ?>
-
-										<div class="owl-item">
-											<a href="<?php the_permalink(); ?>" class="bloco-img" style="background-image: url('<?php if($imagem[0]){ echo $imagem[0]; } ?>');" title="<?php the_title(); ?>">
-												<div class="mask-item vertical-center">
-													<span class="content-vertical">
-														<span class="tit-receita"><?php the_title(); ?></span>
-													</span>
-												</div>
-											</a>
-										</div>
-
-									<?php }
-									}							
-							endwhile;
-							wp_reset_query();
-						}
-					?>
-
-				</div>
-			</div>
-		</div>
-	</section>
+	<?php include 'list-receita-cat.php'; ?>
 
 <?php get_footer(); ?>
 

@@ -91,56 +91,6 @@
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/assets/css/style.css" media="screen" />
 
-
-<?php if(!is_home()){ ?>
-	
-	<!-- CAROUSEL -->
-	<!--<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/assets/css/style.css" media="screen" />-->
-
-<?php } ?>
-
-<script type="text/javascript">
-	//jQuery.noConflict();
-
-	//$(document).ready(function(){ alert();
-
-
-
-		/*
-
-		if(jQuery('body').height() <= jQuery(window).height()){
-			jQuery('.footer').css({position: 'absolute', bottom: '0px'});
-		}else{
-			jQuery('.footer').css({position: 'relative'});
-		}
-
-		scroll_body = jQuery(window).scrollTop();
-		if(scroll_body > 400){
-			jQuery('.header').addClass('scroll_menu');
-		}*/
-	//});	
-/*
-	jQuery(window).resize(function(){
-		jQuery('.menu-mobile').removeClass('active');
-		jQuery('.header').removeClass('active');
-		jQuery('.nav').css('top','-100vh');
-		if(jQuery('body').height() <= jQuery(window).height()){
-			jQuery('.footer').css({position: 'absolute', bottom: '0px'});
-		}else{
-			jQuery('.footer').css({position: 'relative'});
-		}
-	});
-
-	jQuery(window).scroll(function(){
-		scroll_body = jQuery(window).scrollTop();
-		if(scroll_body > 400){
-			jQuery('.header').addClass('scroll_menu');
-		}else{
-			jQuery('.header').removeClass('scroll_menu');
-		}
-	});
-</script>
-
 <!-- ZOPIM -->
 <!--Start of Zendesk Chat Script-->
 <script type="text/javascript">/*
@@ -172,11 +122,3 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
 
 		</div>
 	</header>
-
-	<?php //get_template_part( 'breadcrumbs', get_post_format() ); ?>
-
-	<?php //get_template_part( 'nav-associado', get_post_format() ); ?>
-
-	<?php if(!is_home()){ ?>
-
-	<?php } ?>

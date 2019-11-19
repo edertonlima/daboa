@@ -203,23 +203,16 @@
 					max-width: none;
 				}
 
-				 .txt-preparo, strong {
-				 	//font-size: 1.125rem;
-				 	//line-height: 1rem;
-				 }
-
-				 .txt-preparo {
-				 	padding-left: 60px;
-					width: 100%;
+				.txt-preparo, .txt-preparo strong {
 					font-size: .85rem;
 					line-height: 1.125rem;
-					font-weight: $regular;
+				}
 
-					 strong {
-					 	font-weight: $light;
-					 	color: $cor7;
-					 }
-				 }
+				.txt-preparo {
+				 	padding-left: 60px;
+					width: 100%;
+					font-weight: $regular;
+				}
 			}
 		}
 	}

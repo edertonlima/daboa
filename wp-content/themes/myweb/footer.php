@@ -5,8 +5,8 @@
 				<div class="col-5">
 
 					<h1>
-						<a href="<?php echo get_home_url(); ?>" title="<?php //the_field('titulo', 'option'); ?>">
-							<img src="<?php //the_field('logo_header', 'option'); ?><?php echo get_template_directory_uri(); ?>/assets/images/daboa.png" alt="<?php //the_field('titulo', 'option'); ?>">
+						<a href="<?php echo get_home_url(); ?>" title="">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/images/daboa.png" alt="">
 						</a>
 					</h1>
 
@@ -47,26 +47,38 @@
 					<h4>Contato</h4>
 
 					<div class="contato-item">
-						<span>Fones:</span><h4>(48) 3432.3196</h4>
-						<span></span><h4 class="tel-2">(48) 9981.45736</h4>
+						<?php if(get_field('telefone','options')){ ?>
+							<span>Fones:</span><h4><?php the_field('telefone','options'); ?></h4>
+						<?php } ?>
+
+						<?php if(get_field('whatsapp','options') and get_field('telefone','options')){ ?>
+							<span></span>
+						<?php } ?>
+
+						<?php if(get_field('whatsapp','options')){ ?>
+							<h4 class="tel-2"><?php the_field('whatsapp','options'); ?></h4>
+						<?php } ?>
 					</div>
 
 					<div class="contato-item">
-						<span>SAC:</span><h4>0800 646 1416</h4>
+						<span>SAC:</span><h4><?php the_field('sac','options'); ?></h4>
 					</div>
 
 					<div class="contato-item mini">
-						<span>Email:</span><a href="mailto:comercial@massasdaboa.com.br" title="comercial@massasdaboa.com.br"><h4>comercial@massasdaboa.com.br</h4></a>
+						<span>Email:</span>
+						<a href="mailto:<?php the_field('email','options'); ?>" title="<?php the_field('email','options'); ?>">
+							<h4><?php the_field('email','options'); ?></h4>
+						</a>
 					</div>
 
 					<div class="redes-sociais">
 						<span>Siga-nos nas redes sociais<span> e acompanhe as novidades</span>!</span>
-						<a href="https://www.facebook.com/ " title=""><i class="fab fa-facebook-f"></i></a>
-						<a href="https://www.instagram.com" title=""><i class="fab fa-instagram"></i></a>
+						<a href="<?php the_field('facebook','option'); ?>" title=""><i class="fab fa-facebook-f"></i></a>
+						<a href="<?php the_field('instagram','option'); ?>" title=""><i class="fab fa-instagram"></i></a>
 					</div>
 				</div>
 
-				<p class="copy center"><strong>MDB Indústria Alimentiícia LTDA </strong>Rod. Lino Zanolli, nº 90, Distrito Ind., B. Aurora, Içara, SC</p>
+				<p class="copy center"><strong>MDB Indústria Alimentiícia LTDA </strong><?php the_field('endereco','option'); ?></p>
 			</div>
 		</div>
 	</div>	

@@ -476,6 +476,12 @@
 		font-size: 1.75rem;
 		width: auto;
 		display: inline-block;
+
+		&.title-solo-bottom {
+			width: 90%;
+			margin: 0 auto;
+			display: block;
+		}
 	}
 
 	h3 {
@@ -603,6 +609,12 @@
 
 
 @media all and (max-width: 480px){
+	h2 {
+		&.title-solo-bottom {
+			width: 100%;
+		}
+	}
+
 	.detalhe-prod {
 		.modo-preparo {
 			.item-preparo {
@@ -623,6 +635,19 @@ line-height: 1.125rem;
 font-size: 1rem;
 					}
 				}
+			}
+		}
+	}
+}
+
+
+@media all and (max-width: 440px){
+	.single-post {
+		.owl-carousel .owl-dots {
+			bottom: -15px;
+
+			.owl-dot {
+				margin-bottom: 15px;
 			}
 		}
 	}

@@ -23,16 +23,29 @@
 				}
 			$qtd_slide = 0;
 			if( $images ): ?>
-		        <?php foreach( $images as $image ): //var_dump($image);
+		        <?php foreach( $images as $image ): //var_dump($image['imagem_slide_receitas']);
 		        	?>
 
-		        		<div class="carousel-item<?php if($qtd_slide == 0){ echo ' active'; } ?>" style="background-image: url('<?php echo esc_url($image['sizes']['detalhe-post-page']); ?>');">
-		        			
-				        	<?php if($image['caption'] != ''){ ?>
-				        		<a href="<?php echo $image['caption']; ?>"></a>
-				        	<?php } ?>
+		        	<?php
+		        		if((is_archive()) and (!is_tax())){ ?>
 
-		        		</div>
+			        		<div class="carousel-item<?php if($qtd_slide == 0){ echo ' active'; } ?>" style="background-image: url('<?php echo esc_url($image['imagem_slide_receitas']['sizes']['detalhe-post-page']); ?>');">
+			        			
+					        	<?php if($image['link_slide_receitas'] != ''){ ?>
+					        		<a href="<?php echo $image['link_slide_receitas']; ?>"></a>
+					        	<?php } ?>
+			        		</div>
+
+			        	<?php }else{ ?>
+
+			        		<div class="carousel-item<?php if($qtd_slide == 0){ echo ' active'; } ?>" style="background-image: url('<?php echo esc_url($image['imagem_slide_principal']['sizes']['detalhe-post-page']); ?>');">
+			        			
+					        	<?php if($image['link_slide_principal'] != ''){ ?>
+					        		<a href="<?php echo $image['link_slide_principal']; ?>"></a>
+					        	<?php } ?>
+			        		</div>
+
+			        	<?php } ?>
 
 		        	<?php $qtd_slide = $qtd_slide+1;
 		        endforeach; ?>

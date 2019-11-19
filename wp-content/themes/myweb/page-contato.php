@@ -62,19 +62,25 @@
 								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-contato-1.jpg">
 							</div>
 							<div class="txt-contato">
-								<a href="emailto:sac@massasdaboa.com.br">sac@massasdaboa.com.br</a>
+								<a href="emailto:<?php the_field('email','options'); ?>"><?php the_field('email','options'); ?></a>
 							</div>
 						</div>	
 						<div class="item-contato-info">
 							<div class="ico-contato"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-contato-2.jpg"></div>
 							<div class="txt-contato">
-								<span>(48) 9981.4573<br>(48) 3432.3196</span>
+								<span>
+									<?php the_field('whatsapp','options'); ?>
+									<?php if(get_field('whatsapp','options') and get_field('telefone','options')){ ?>
+										<br>
+									<?php } ?>
+									<?php the_field('telefone','options'); ?>
+								</span>
 							</div>
 						</div>	
 						<div class="item-contato-info">
 							<div class="ico-contato"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-contato-3.jpg"></div>
 							<div class="txt-contato">
-								<span>0800 646 1416</span>
+								<span><?php the_field('sac','options'); ?>6</span>
 							</div>
 						</div>	
 				</div>
