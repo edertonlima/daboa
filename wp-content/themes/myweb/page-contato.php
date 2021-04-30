@@ -47,7 +47,7 @@
 								</fieldset>
 								<fieldset>
 									<p class="msg-form right"></p><br><br>
-									<button class="enviar">ENVIAR</button>
+									<button type="button" class="enviar">ENVIAR</button>
 								</fieldset>
 							</div>
 						</div>
@@ -102,8 +102,8 @@
 			var telefone = jQuery('#telefone').val();
 			var assunto = jQuery('#assunto').val();
 			var mensagem = jQuery('#mensagem').val();
-			var para = 'comercial@massasdaboa.com.br';//'<?php the_field('email', 'option'); ?>';
-			var nome_site = 'Massas da Boa'; //'<?php bloginfo('name'); ?>';
+			var para = '<?php the_field('email', 'option'); ?>';
+			var nome_site = '<?php bloginfo('name'); ?>';
 
 			if(nome == ''){
 				jQuery('#nome').parent().addClass('erro');
@@ -139,7 +139,7 @@
 						classe = 'erro';
 					}
 					jQuery('.msg-form').addClass(classe).html(resultado);
-					jQuery('.contato-home').trigger("reset");
+					jQuery('.fale-conosco').trigger("reset");
 					jQuery('.enviar').html('ENVIAR').prop( "disabled", false );
 				});
 			}
